@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+type Lang = "ES" | "EN";
 type Category = "ALL" | "RUNNING" | "LIFESTYLE" | "TRAINING" | "BASKETBALL";
 
 type Sneaker = {
@@ -9,12 +10,16 @@ type Sneaker = {
   name: string;
   brand: string;
   category: Exclude<Category, "ALL">;
-  badge: string;
+  badgeEs: string;
+  badgeEn: string;
   score: number;
   price: string;
-  summary: string;
-  fitNote: string;
+  summaryEs: string;
+  summaryEn: string;
+  fitEs: string;
+  fitEn: string;
   accent: string;
+  code: string;
 };
 
 const SNEAKERS: Sneaker[] = [
@@ -23,72 +28,96 @@ const SNEAKERS: Sneaker[] = [
     name: "Pegasus 41",
     brand: "NIKE · RUNNING",
     category: "RUNNING",
-    badge: "DAILY RUNNING",
+    badgeEs: "RODAJE DIARIO",
+    badgeEn: "DAILY RUNNING",
     score: 88,
     price: "€139*",
-    summary: "Zapatilla versátil para rodajes diarios con respuesta equilibrada.",
-    fitNote: "Talla habitual · Amortiguación reactiva para asfalto.",
-    accent: "#b91c1c",
+    summaryEs: "Zapatilla versátil para rodajes diarios con respuesta equilibrada.",
+    summaryEn: "Versatile daily trainer with balanced and responsive cushioning.",
+    fitEs: "Talla habitual · Amortiguación reactiva para asfalto.",
+    fitEn: "True to size · Responsive cushioning for road runs.",
+    accent: "#991b1b",
+    code: "NK-P41",
   },
   {
     id: "ultraboost",
     name: "Ultraboost",
     brand: "ADIDAS · RUNNING",
     category: "RUNNING",
-    badge: "COMFORT FOCUS",
+    badgeEs: "ENFOQUE CONFORT",
+    badgeEn: "COMFORT FOCUS",
     score: 90,
     price: "€180*",
-    summary: "Enfocada en suavidad prolongada y sensación envolvente en el pie.",
-    fitNote: "Ajuste tipo calcetín · Ideal para uso prolongado y caminar.",
-    accent: "#1f2937",
+    summaryEs: "Enfocada en suavidad prolongada y sensación envolvente en el pie.",
+    summaryEn: "Focused on long-lasting softness and a snug, supportive feel.",
+    fitEs: "Ajuste tipo calcetín · Ideal para uso prolongado y caminar.",
+    fitEn: "Sock-like fit · Great for all-day wear and walking.",
+    accent: "#1e293b",
+    code: "AD-UB01",
   },
   {
     id: "nb-9060",
     name: "9060",
     brand: "NEW BALANCE · LIFESTYLE",
     category: "LIFESTYLE",
-    badge: "STREET ICON",
+    badgeEs: "ICONO URBANO",
+    badgeEn: "STREET ICON",
     score: 89,
     price: "€190*",
-    summary: "Silueta urbana de suela esculpida inspirada en el archivo running.",
-    fitNote: "Horma equilibrada · Estética marcada para calle y diario.",
+    summaryEs: "Silueta urbana de suela esculpida inspirada en el archivo running.",
+    summaryEn: "Sculpted street silhouette rooted in running heritage.",
+    fitEs: "Horma equilibrada · Estética marcada para calle y diario.",
+    fitEn: "Balanced fit · Bold proportions for everyday street style.",
     accent: "#334155",
+    code: "NB-9060",
   },
   {
     id: "chuck-70",
     name: "Chuck 70",
     brand: "CONVERSE · LIFESTYLE",
     category: "LIFESTYLE",
-    badge: "EVERYDAY CLASSIC",
+    badgeEs: "CLÁSICO DIARIO",
+    badgeEn: "EVERYDAY CLASSIC",
     score: 84,
     price: "€95*",
-    summary: "Clásico atemporal con lona más densa y plantilla reforzada.",
-    fitNote: "Perfil bajo/clásico · Combina con estilo casual y urbano.",
-    accent: "#525252",
+    summaryEs: "Clásico atemporal con lona más densa y plantilla reforzada.",
+    summaryEn: "Timeless classic with heavier canvas and reinforced footbed.",
+    fitEs: "Perfil clásico · Combina con estilo casual y urbano.",
+    fitEn: "Classic profile · Easy pairing for casual daily outfits.",
+    accent: "#44403c",
+    code: "CV-C70",
   },
   {
     id: "clifton",
     name: "Clifton",
     brand: "HOKA · WALKING",
     category: "TRAINING",
-    badge: "LIGHT CUSHIONING",
+    badgeEs: "AMORTIGUACIÓN LIGERA",
+    badgeEn: "LIGHT CUSHIONING",
     score: 90,
     price: "€150*",
-    summary: "Amortiguación generosa con peso contenido para largas jornadas.",
-    fitNote: "Pisada fluida · Prioridad absoluta en comodidad y suavidad.",
-    accent: "#991b1b",
+    summaryEs: "Amortiguación generosa con peso contenido para largas jornadas.",
+    summaryEn: "Generous cushioning at a light weight for long days on foot.",
+    fitEs: "Pisada fluida · Prioridad absoluta en comodidad y suavidad.",
+    fitEn: "Smooth stride · Built around plush comfort and ease.",
+    accent: "#7f1d1d",
+    code: "HK-CLF",
   },
   {
     id: "aj1",
     name: "Air Jordan 1",
     brand: "JORDAN · BASKETBALL",
     category: "BASKETBALL",
-    badge: "COURT HERITAGE",
+    badgeEs: "HERENCIA DE CANCHA",
+    badgeEn: "COURT HERITAGE",
     score: 86,
     price: "€180*",
-    summary: "Referente histórico nacido en la cancha y consolidado en cultura urbana.",
-    fitNote: "Estructura firme · Ícono de colección y uso diario.",
-    accent: "#7f1d1d",
+    summaryEs: "Referente histórico nacido en la cancha y consolidado en cultura urbana.",
+    summaryEn: "Historic court icon that shaped modern sneaker culture.",
+    fitEs: "Estructura firme · Ícono de colección y uso diario.",
+    fitEn: "Structured build · Classic rotation staple.",
+    accent: "#18181b",
+    code: "JD-AJ1",
   },
 ];
 
@@ -113,15 +142,177 @@ const BRANDS = [
   "DR. MARTENS",
 ];
 
-const CATEGORIES: { key: Category; label: string }[] = [
-  { key: "ALL", label: "ALL SNEAKERS" },
-  { key: "RUNNING", label: "RUNNING" },
-  { key: "LIFESTYLE", label: "LIFESTYLE" },
-  { key: "TRAINING", label: "TRAINING" },
-  { key: "BASKETBALL", label: "BASKETBALL" },
-];
+const UI_TEXT = {
+  ES: {
+    topLeft: "CULTURA SNEAKER INDEPENDIENTE Y RENDIMIENTO",
+    topRight: "DESCUBRE · COMPARA · ENCUENTRA TU PAR",
+    nav: ["REVISTA", "ANÁLISIS", "COMPARAR", "BUSCADOR", "MARCAS", "LANZAMIENTOS"],
+    listBtn: "LISTA",
+    kicker: "LA PLATAFORMA INTERNACIONAL DE SNEAKERS",
+    heroTitleLine1: "ENCUENTRA TU",
+    heroTitleLine2: "PRÓXIMO PASO",
+    heroDesc:
+      "Perspectiva independiente sobre sneakers, rendimiento y cultura urbana. Descubre el par que se mueve contigo.",
+    ctaPrimary: "EXPLORAR SNEAKERS →",
+    ctaSecondary: "BUSCAR TU PAR",
+    archiveTag: "EDICIÓN 001",
+    archiveTitle: "ARCHIVO DE PISTA Y ASFALTO",
+    archiveDesc:
+      "Selección editorial de confort para correr, uso diario e iconos de cancha.",
+    ticker: [
+      "RENDIMIENTO",
+      "CULTURA URBANA",
+      "NUEVOS LANZAMIENTOS",
+      "PERSPECTIVA REAL",
+      "ENCUENTRA TU PRÓXIMO PAR",
+    ],
+    editTag: "LA SELECCIÓN · 001",
+    featuredTitle: "SNEAKERS DESTACADAS",
+    featuredNote:
+      "Selección inicial de deporte, confort diario y streetwear. Catálogo de muestra: verifica especificaciones antes de comprar.",
+    catAll: "TODAS",
+    addCompare: "+ COMPARAR",
+    inCompare: "EN LISTA ✓",
+    details: "DETALLES ↗",
+    selectedPrefix: "MODELO SELECCIONADO",
+    close: "CERRAR",
+    editorialKicker: "HISTORIAS, CULTURA Y PERSPECTIVA",
+    editorialTitle: "MÁS ALLÁ DE LA SNEAKER",
+    editorialDesc:
+      "Ideas editoriales para una comunidad global. Los artículos mostrados son ejemplos.",
+    story1Tag: "CULTURA",
+    story1Title: "MÁS QUE UNA SILUETA",
+    story1Body:
+      "Cómo las zapatillas conectan deporte, identidad, diseño y vida diaria.",
+    story1Cta: "EXPLORAR CULTURA ↗",
+    story2Tag: "GUÍA DE USO",
+    story2Title: "ELIGE CON PROPÓSITO",
+    story2Body:
+      "Entiende amortiguación, ajuste y uso antes de elegir tu próximo par.",
+    story2Cta: "BUSCAR TU PAR ↗",
+    compareKicker: "DECIDE BIEN",
+    compareTitle: "TU LISTA COMPARATIVA",
+    compareDesc:
+      "Elige hasta tres modelos en las tarjetas para compararlos lado a lado.",
+    remove: "Quitar",
+    finderKicker: "MATCH RÁPIDO",
+    finderTitle: "¿QUÉ ES LO MÁS IMPORTANTE?",
+    priorityLabel: "Selecciona tu prioridad",
+    priorities: [
+      { value: "Comfort", label: "Confort" },
+      { value: "Versatility", label: "Versatilidad" },
+      { value: "Style", label: "Estilo" },
+    ],
+    recLabel: "ELECCIÓN RECOMENDADA",
+    brandsKicker: "LAS MARCAS QUE MARCAN EL RITMO",
+    brandsTitle: "EXPLORAR MARCAS",
+    systemKicker: "HECHO PARA CRECER",
+    systemTitle: "EL SISTEMA D.BELL",
+    sys1Tag: "01 / EDITORIAL",
+    sys1Title: "LABORATORIO DE PRUEBAS",
+    sys1Body:
+      "Pruebas transparentes, criterios claros y límites honestos en cada modelo.",
+    sys2Tag: "02 / ANÁLISIS",
+    sys2Title: "PUNTUACIÓN D.BELL",
+    sys2Body:
+      "Marco ponderado de confort, construcción, diseño, valor y versatilidad.",
+    sys3Tag: "03 / TIENDAS",
+    sys3Title: "MULTITIENDA",
+    sys3Body:
+      "Pensado para conectar distribuidores autorizados y calendarios de lanzamientos.",
+    footerKicker: "NO TE PIERDAS NADA",
+    footerTitle: "RECIBE EL PRÓXIMO DROP.",
+    placeholder: "Tu correo electrónico",
+    submit: "APUNTARME ↗",
+    joined: "APUNTADO ✓",
+  },
+  EN: {
+    topLeft: "INDEPENDENT SNEAKER CULTURE & PERFORMANCE",
+    topRight: "DISCOVER · COMPARE · FIND YOUR PAIR",
+    nav: ["MAGAZINE", "REVIEWS", "COMPARE", "FINDER", "BRANDS", "RELEASES"],
+    listBtn: "LIST",
+    kicker: "THE INTERNATIONAL SNEAKER PLATFORM",
+    heroTitleLine1: "FIND YOUR",
+    heroTitleLine2: "NEXT MOVE",
+    heroDesc:
+      "Independent perspective on sneakers, performance and street culture. Discover the pair that moves with you.",
+    ctaPrimary: "EXPLORE SNEAKERS →",
+    ctaSecondary: "FIND YOUR PAIR",
+    archiveTag: "EDITION 001",
+    archiveTitle: "COURT & ROAD ARCHIVE",
+    archiveDesc:
+      "Curated comparison of running comfort, daily lifestyle and court icons.",
+    ticker: [
+      "PERFORMANCE",
+      "STREET CULTURE",
+      "NEW RELEASES",
+      "REAL PERSPECTIVE",
+      "DISCOVER YOUR NEXT PAIR",
+    ],
+    editTag: "THE EDIT · 001",
+    featuredTitle: "FEATURED SNEAKERS",
+    featuredNote:
+      "A starting selection across sport, everyday comfort and streetwear. Demo catalogue — verify specifications before purchase.",
+    catAll: "ALL SNEAKERS",
+    addCompare: "+ ADD TO COMPARE",
+    inCompare: "IN COMPARE ✓",
+    details: "DETAILS ↗",
+    selectedPrefix: "SELECTED MODEL",
+    close: "CLOSE",
+    editorialKicker: "STORIES, CULTURE & PERSPECTIVE",
+    editorialTitle: "BEYOND THE SNEAKER",
+    editorialDesc:
+      "Editorial ideas for a global sneaker audience. Articles shown here are sample concepts.",
+    story1Tag: "CULTURE FEATURE",
+    story1Title: "MORE THAN A SILHOUETTE",
+    story1Body:
+      "How sneakers move between sport, identity, design and everyday life.",
+    story1Cta: "EXPLORE THE CULTURE ↗",
+    story2Tag: "PERFORMANCE GUIDE",
+    story2Title: "CHOOSE WITH PURPOSE",
+    story2Body:
+      "Understand cushioning, fit and use before choosing your next pair.",
+    story2Cta: "FIND YOUR PAIR ↗",
+    compareKicker: "MAKE THE RIGHT CALL",
+    compareTitle: "COMPARE YOUR SHORTLIST",
+    compareDesc:
+      "Select up to three models in the sneaker cards to compare side by side.",
+    remove: "Remove",
+    finderKicker: "QUICK MATCH",
+    finderTitle: "WHAT MATTERS MOST?",
+    priorityLabel: "Select your priority",
+    priorities: [
+      { value: "Comfort", label: "Comfort" },
+      { value: "Versatility", label: "Versatility" },
+      { value: "Style", label: "Style" },
+    ],
+    recLabel: "RECOMMENDED PICK",
+    brandsKicker: "THE NAMES SHAPING THE GAME",
+    brandsTitle: "EXPLORE BRANDS",
+    systemKicker: "BUILT TO GROW",
+    systemTitle: "THE D.BELL SYSTEM",
+    sys1Tag: "01 / EDITORIAL",
+    sys1Title: "TEST LAB",
+    sys1Body:
+      "Transparent product testing, clear criteria and honest limitations.",
+    sys2Tag: "02 / INTELLIGENCE",
+    sys2Title: "D.BELL SCORE",
+    sys2Body:
+      "A weighted editorial framework for comfort, construction, design, value and versatility.",
+    sys3Tag: "03 / COMMERCE",
+    sys3Title: "MULTI-RETAILER",
+    sys3Body:
+      "Designed to connect authorized retailers and drop calendars cleanly.",
+    footerKicker: "STAY IN THE LOOP",
+    footerTitle: "GET THE NEXT DROP.",
+    placeholder: "Your email address",
+    submit: "SIGN ME UP ↗",
+    joined: "JOINED ✓",
+  },
+} as const;
 
 export default function HomePage() {
+  const [lang, setLang] = useState<Lang>("ES");
   const [selectedCategory, setSelectedCategory] = useState<Category>("ALL");
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
   const [compareIds, setCompareIds] = useState<string[]>(["pegasus-41", "ultraboost"]);
@@ -129,6 +320,15 @@ export default function HomePage() {
   const [priority, setPriority] = useState<string>("Comfort");
   const [email, setEmail] = useState<string>("");
   const [subscribed, setSubscribed] = useState<boolean>(false);
+
+  const t = UI_TEXT[lang];
+  const categories: { key: Category; label: string }[] = [
+    { key: "ALL", label: t.catAll },
+    { key: "RUNNING", label: "RUNNING" },
+    { key: "LIFESTYLE", label: "LIFESTYLE" },
+    { key: "TRAINING", label: "TRAINING" },
+    { key: "BASKETBALL", label: "BASKETBALL" },
+  ];
 
   const visibleSneakers = SNEAKERS.filter((item) => {
     const matchesCategory =
@@ -184,8 +384,8 @@ export default function HomePage() {
           borderBottom: "1px solid #262626",
         }}
       >
-        <span>INDEPENDENT SNEAKER CULTURE &amp; PERFORMANCE</span>
-        <span>DISCOVER · COMPARE · FIND YOUR PAIR</span>
+        <span>{t.topLeft}</span>
+        <span>{t.topRight}</span>
       </div>
 
       {/* Header */}
@@ -229,38 +429,30 @@ export default function HomePage() {
               color: "#d4d4d4",
             }}
           >
-            <a href="#editorial" style={{ color: "inherit", textDecoration: "none" }}>
-              MAGAZINE
-            </a>
-            <a href="#featured" style={{ color: "inherit", textDecoration: "none" }}>
-              REVIEWS
-            </a>
-            <a href="#compare" style={{ color: "inherit", textDecoration: "none" }}>
-              COMPARE
-            </a>
-            <a href="#finder" style={{ color: "inherit", textDecoration: "none" }}>
-              FINDER
-            </a>
-            <a href="#brands" style={{ color: "inherit", textDecoration: "none" }}>
-              BRANDS
-            </a>
-            <a href="#system" style={{ color: "inherit", textDecoration: "none" }}>
-              RELEASES
-            </a>
+            <a href="#editorial" style={{ color: "inherit", textDecoration: "none" }}>{t.nav[0]}</a>
+            <a href="#featured" style={{ color: "inherit", textDecoration: "none" }}>{t.nav[1]}</a>
+            <a href="#compare" style={{ color: "inherit", textDecoration: "none" }}>{t.nav[2]}</a>
+            <a href="#finder" style={{ color: "inherit", textDecoration: "none" }}>{t.nav[3]}</a>
+            <a href="#brands" style={{ color: "inherit", textDecoration: "none" }}>{t.nav[4]}</a>
+            <a href="#system" style={{ color: "inherit", textDecoration: "none" }}>{t.nav[5]}</a>
           </nav>
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.72rem" }}>
-          <span
+          <button
+            type="button"
+            onClick={() => setLang((prev) => (prev === "ES" ? "EN" : "ES"))}
             style={{
               backgroundColor: "#262626",
               color: "#ffffff",
-              padding: "0.35rem 0.6rem",
-              fontWeight: 700,
+              border: "1px solid #525252",
+              padding: "0.35rem 0.65rem",
+              fontWeight: 800,
+              cursor: "pointer",
             }}
           >
-            ES / EN
-          </span>
+            {lang === "ES" ? "ES / EN → EN" : "EN / ES → ES"}
+          </button>
           <a
             href="#compare"
             style={{
@@ -271,7 +463,7 @@ export default function HomePage() {
               textDecoration: "none",
             }}
           >
-            LIST ({compareIds.length})
+            {t.listBtn} ({compareIds.length})
           </a>
         </div>
       </header>
@@ -306,7 +498,7 @@ export default function HomePage() {
                 margin: "0 0 0.85rem 0",
               }}
             >
-              THE INTERNATIONAL SNEAKER PLATFORM
+              {t.kicker}
             </p>
             <h1
               style={{
@@ -317,9 +509,10 @@ export default function HomePage() {
                 margin: "0 0 1.1rem 0",
               }}
             >
-              FIND YOUR
+              {t.heroTitleLine1}
               <br />
-              NEXT MOVE<span style={{ color: "#dc2626" }}>.</span>
+              {t.heroTitleLine2}
+              <span style={{ color: "#dc2626" }}>.</span>
             </h1>
             <p
               style={{
@@ -330,8 +523,7 @@ export default function HomePage() {
                 margin: "0 0 1.6rem 0",
               }}
             >
-              Independent perspective on sneakers, performance and street
-              culture. Discover the pair that moves with you.
+              {t.heroDesc}
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
               <a
@@ -346,7 +538,7 @@ export default function HomePage() {
                   textDecoration: "none",
                 }}
               >
-                EXPLORE SNEAKERS →
+                {t.ctaPrimary}
               </a>
               <a
                 href="#finder"
@@ -360,51 +552,59 @@ export default function HomePage() {
                   textDecoration: "none",
                 }}
               >
-                FIND YOUR PAIR
+                {t.ctaSecondary}
               </a>
             </div>
           </div>
 
-          {/* Visual Showcase Card */}
+          {/* Visual Showcase Panel */}
           <div
             style={{
               backgroundColor: "#18181b",
               border: "1px solid #27272a",
-              padding: "1.5rem",
+              padding: "1.25rem",
             }}
           >
             <div
               style={{
                 background:
-                  "radial-gradient(circle at 70% 30%, rgba(220,38,38,0.45), rgba(24,24,27,0.95) 70%)",
+                  "linear-gradient(135deg, #27272a 0%, #111111 60%, #7f1d1d 100%)",
                 border: "1px solid #3f3f46",
                 padding: "2rem 1.25rem",
-                marginBottom: "1rem",
+                marginBottom: "0.9rem",
+                position: "relative",
+                overflow: "hidden",
               }}
             >
-              <span
+              <div
                 style={{
-                  backgroundColor: "#dc2626",
-                  color: "#ffffff",
-                  fontSize: "0.68rem",
-                  fontWeight: 800,
-                  letterSpacing: "0.1em",
-                  padding: "0.25rem 0.5rem",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginBottom: "1rem",
                 }}
               >
-                EDITION 001
-              </span>
-              <p
-                style={{
-                  fontSize: "1.4rem",
-                  fontWeight: 900,
-                  margin: "0.85rem 0 0.35rem 0",
-                }}
-              >
-                COURT &amp; ROAD ARCHIVE
+                <span
+                  style={{
+                    backgroundColor: "#dc2626",
+                    color: "#ffffff",
+                    fontSize: "0.68rem",
+                    fontWeight: 800,
+                    letterSpacing: "0.1em",
+                    padding: "0.25rem 0.5rem",
+                  }}
+                >
+                  {t.archiveTag}
+                </span>
+                <span style={{ fontSize: "0.72rem", fontWeight: 800, color: "#fca5a5" }}>
+                  DB-01
+                </span>
+              </div>
+              <p style={{ fontSize: "1.45rem", fontWeight: 900, margin: "0 0 0.4rem 0" }}>
+                {t.archiveTitle}
               </p>
               <p style={{ color: "#d4d4d4", fontSize: "0.88rem", margin: 0 }}>
-                Curated comparison of running comfort, daily lifestyle and court icons.
+                {t.archiveDesc}
               </p>
             </div>
             <p
@@ -437,15 +637,12 @@ export default function HomePage() {
           gap: "0.75rem",
         }}
       >
-        <span>PERFORMANCE</span>
-        <span>✦</span>
-        <span>STREET CULTURE</span>
-        <span>✦</span>
-        <span>NEW RELEASES</span>
-        <span>✦</span>
-        <span>REAL PERSPECTIVE</span>
-        <span>✦</span>
-        <span>DISCOVER YOUR NEXT PAIR</span>
+        {t.ticker.map((item, idx) => (
+          <span key={item}>
+            {item}
+            {idx < t.ticker.length - 1 ? "  ✦" : ""}
+          </span>
+        ))}
       </div>
 
       {/* Featured Sneakers + Tabs */}
@@ -477,7 +674,7 @@ export default function HomePage() {
                 margin: "0 0 0.35rem 0",
               }}
             >
-              THE EDIT · 001
+              {t.editTag}
             </p>
             <h2
               style={{
@@ -487,7 +684,7 @@ export default function HomePage() {
                 margin: 0,
               }}
             >
-              FEATURED SNEAKERS
+              {t.featuredTitle}
             </h2>
           </div>
 
@@ -500,8 +697,7 @@ export default function HomePage() {
               lineHeight: 1.45,
             }}
           >
-            A starting selection across sport, everyday comfort and streetwear.
-            Demo catalogue — verify specifications before purchase.
+            {t.featuredNote}
           </p>
         </div>
 
@@ -514,7 +710,7 @@ export default function HomePage() {
             marginBottom: "1.5rem",
           }}
         >
-          {CATEGORIES.map((cat) => {
+          {categories.map((cat) => {
             const active = selectedCategory === cat.key;
             return (
               <button
@@ -553,7 +749,7 @@ export default function HomePage() {
                 cursor: "pointer",
               }}
             >
-              BRAND: {selectedBrand} ✕
+              {selectedBrand} ✕
             </button>
           )}
         </div>
@@ -582,29 +778,33 @@ export default function HomePage() {
                 <div>
                   <div
                     style={{
-                      backgroundColor: item.accent,
+                      background: `linear-gradient(135deg, ${item.accent} 0%, #111111 100%)`,
                       color: "#ffffff",
-                      padding: "1.25rem",
-                      minHeight: "120px",
+                      padding: "1.15rem 1.25rem",
+                      minHeight: "130px",
                       display: "flex",
                       flexDirection: "column",
                       justifyContent: "space-between",
                     }}
                   >
-                    <span
-                      style={{
-                        backgroundColor: "#111111",
-                        color: "#ffffff",
-                        fontSize: "0.65rem",
-                        fontWeight: 800,
-                        letterSpacing: "0.08em",
-                        padding: "0.25rem 0.5rem",
-                        alignSelf: "flex-start",
-                      }}
-                    >
-                      {item.badge}
-                    </span>
-                    <span style={{ fontSize: "0.72rem", opacity: 0.85 }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                      <span
+                        style={{
+                          backgroundColor: "#111111",
+                          color: "#ffffff",
+                          fontSize: "0.65rem",
+                          fontWeight: 800,
+                          letterSpacing: "0.08em",
+                          padding: "0.25rem 0.5rem",
+                        }}
+                      >
+                        {lang === "ES" ? item.badgeEs : item.badgeEn}
+                      </span>
+                      <span style={{ fontSize: "0.72rem", fontWeight: 800, opacity: 0.85 }}>
+                        {item.code}
+                      </span>
+                    </div>
+                    <span style={{ fontSize: "0.72rem", letterSpacing: "0.08em", opacity: 0.9 }}>
                       {item.category}
                     </span>
                   </div>
@@ -625,7 +825,7 @@ export default function HomePage() {
                       {item.name}
                     </h3>
                     <p style={{ color: "#525252", fontSize: "0.86rem", lineHeight: 1.45, margin: "0 0 0.9rem 0" }}>
-                      {item.summary}
+                      {lang === "ES" ? item.summaryEs : item.summaryEn}
                     </p>
 
                     <div
@@ -672,7 +872,7 @@ export default function HomePage() {
                       cursor: "pointer",
                     }}
                   >
-                    {isCompared ? "IN COMPARE ✓" : "+ ADD TO COMPARE"}
+                    {isCompared ? t.inCompare : t.addCompare}
                   </button>
                   <button
                     type="button"
@@ -687,7 +887,7 @@ export default function HomePage() {
                       cursor: "pointer",
                     }}
                   >
-                    DETAILS ↗
+                    {t.details}
                   </button>
                 </div>
               </article>
@@ -715,13 +915,13 @@ export default function HomePage() {
           >
             <div>
               <span style={{ fontSize: "0.68rem", fontWeight: 800, color: "#dc2626" }}>
-                SELECTED MODEL · {activeDetail.brand}
+                {t.selectedPrefix} · {activeDetail.brand}
               </span>
               <h4 style={{ margin: "0.2rem 0", fontSize: "1.1rem" }}>
-                {activeDetail.name} — {activeDetail.price} (Score {activeDetail.score}/100)
+                {activeDetail.name} — {activeDetail.price} ({activeDetail.score}/100)
               </h4>
               <p style={{ margin: 0, fontSize: "0.88rem", color: "#525252" }}>
-                {activeDetail.fitNote}
+                {lang === "ES" ? activeDetail.fitEs : activeDetail.fitEn}
               </p>
             </div>
             <button
@@ -736,7 +936,7 @@ export default function HomePage() {
                 cursor: "pointer",
               }}
             >
-              CLOSE
+              {t.close}
             </button>
           </div>
         )}
@@ -772,14 +972,14 @@ export default function HomePage() {
                   margin: "0 0 0.35rem 0",
                 }}
               >
-                STORIES, CULTURE &amp; PERSPECTIVE
+                {t.editorialKicker}
               </p>
               <h2 style={{ fontSize: "2rem", fontWeight: 900, margin: 0 }}>
-                BEYOND THE SNEAKER
+                {t.editorialTitle}
               </h2>
             </div>
             <p style={{ color: "#a3a3a3", fontSize: "0.84rem", maxWidth: "360px", margin: 0 }}>
-              Editorial ideas for a global sneaker audience. Articles shown here are sample concepts.
+              {t.editorialDesc}
             </p>
           </div>
 
@@ -798,19 +998,19 @@ export default function HomePage() {
               }}
             >
               <span style={{ color: "#ef4444", fontSize: "0.68rem", fontWeight: 800 }}>
-                CULTURE FEATURE
+                {t.story1Tag}
               </span>
               <h3 style={{ fontSize: "1.5rem", fontWeight: 900, margin: "0.5rem 0" }}>
-                MORE THAN A SILHOUETTE
+                {t.story1Title}
               </h3>
               <p style={{ color: "#d4d4d4", fontSize: "0.9rem", lineHeight: 1.5, margin: "0 0 1rem 0" }}>
-                How sneakers move between sport, identity, design and everyday life.
+                {t.story1Body}
               </p>
               <a
                 href="#featured"
                 style={{ color: "#ef4444", fontSize: "0.75rem", fontWeight: 800, textDecoration: "none" }}
               >
-                EXPLORE THE CULTURE ↗
+                {t.story1Cta}
               </a>
             </article>
 
@@ -822,19 +1022,19 @@ export default function HomePage() {
               }}
             >
               <span style={{ color: "#ef4444", fontSize: "0.68rem", fontWeight: 800 }}>
-                PERFORMANCE GUIDE
+                {t.story2Tag}
               </span>
               <h3 style={{ fontSize: "1.5rem", fontWeight: 900, margin: "0.5rem 0" }}>
-                CHOOSE WITH PURPOSE
+                {t.story2Title}
               </h3>
               <p style={{ color: "#d4d4d4", fontSize: "0.9rem", lineHeight: 1.5, margin: "0 0 1rem 0" }}>
-                Understand cushioning, fit and use before choosing your next pair.
+                {t.story2Body}
               </p>
               <a
                 href="#finder"
                 style={{ color: "#ef4444", fontSize: "0.75rem", fontWeight: 800, textDecoration: "none" }}
               >
-                FIND YOUR PAIR ↗
+                {t.story2Cta}
               </a>
             </article>
           </div>
@@ -861,56 +1061,50 @@ export default function HomePage() {
           }}
         >
           <p style={{ color: "#dc2626", fontSize: "0.7rem", fontWeight: 800, margin: "0 0 0.25rem 0" }}>
-            MAKE THE RIGHT CALL
+            {t.compareKicker}
           </p>
           <h2 style={{ fontSize: "1.5rem", fontWeight: 900, margin: "0 0 0.75rem 0" }}>
-            COMPARE YOUR SHORTLIST
+            {t.compareTitle}
           </h2>
           <p style={{ color: "#525252", fontSize: "0.86rem", margin: "0 0 1rem 0" }}>
-            Select up to three models in the sneaker cards to compare side by side.
+            {t.compareDesc}
           </p>
 
-          {comparedSneakers.length === 0 ? (
-            <p style={{ color: "#737373", fontSize: "0.85rem" }}>
-              No models selected yet. Click &ldquo;+ ADD TO COMPARE&rdquo; above.
-            </p>
-          ) : (
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
-              {comparedSneakers.map((s) => (
-                <div
-                  key={s.id}
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
+            {comparedSneakers.map((s) => (
+              <div
+                key={s.id}
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  padding: "0.65rem 0.8rem",
+                  backgroundColor: "#f7f6f2",
+                  border: "1px solid #e5e5e5",
+                }}
+              >
+                <div>
+                  <strong style={{ fontSize: "0.9rem" }}>{s.name}</strong>
+                  <div style={{ fontSize: "0.75rem", color: "#525252" }}>
+                    {s.score}/100 · {s.price}
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => toggleCompare(s.id)}
                   style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    padding: "0.65rem 0.8rem",
-                    backgroundColor: "#f7f6f2",
-                    border: "1px solid #e5e5e5",
+                    backgroundColor: "transparent",
+                    border: "1px solid #d4d4d4",
+                    padding: "0.3rem 0.55rem",
+                    fontSize: "0.7rem",
+                    cursor: "pointer",
                   }}
                 >
-                  <div>
-                    <strong style={{ fontSize: "0.9rem" }}>{s.name}</strong>
-                    <div style={{ fontSize: "0.75rem", color: "#525252" }}>
-                      Score {s.score}/100 · {s.price}
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => toggleCompare(s.id)}
-                    style={{
-                      backgroundColor: "transparent",
-                      border: "1px solid #d4d4d4",
-                      padding: "0.3rem 0.55rem",
-                      fontSize: "0.7rem",
-                      cursor: "pointer",
-                    }}
-                  >
-                    Remove
-                  </button>
-                </div>
-              ))}
-            </div>
-          )}
+                  {t.remove}
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div
@@ -922,17 +1116,17 @@ export default function HomePage() {
           }}
         >
           <p style={{ color: "#dc2626", fontSize: "0.7rem", fontWeight: 800, margin: "0 0 0.25rem 0" }}>
-            QUICK MATCH
+            {t.finderKicker}
           </p>
           <h2 style={{ fontSize: "1.5rem", fontWeight: 900, margin: "0 0 0.75rem 0" }}>
-            WHAT MATTERS MOST?
+            {t.finderTitle}
           </h2>
 
           <label
             htmlFor="priority-select"
             style={{ display: "block", fontSize: "0.78rem", fontWeight: 700, marginBottom: "0.4rem" }}
           >
-            Select your priority
+            {t.priorityLabel}
           </label>
           <select
             id="priority-select"
@@ -947,9 +1141,11 @@ export default function HomePage() {
               marginBottom: "1rem",
             }}
           >
-            <option value="Comfort">Comfort</option>
-            <option value="Versatility">Versatility</option>
-            <option value="Style">Style</option>
+            {t.priorities.map((p) => (
+              <option key={p.value} value={p.value}>
+                {p.label}
+              </option>
+            ))}
           </select>
 
           <div
@@ -960,13 +1156,13 @@ export default function HomePage() {
             }}
           >
             <span style={{ color: "#ef4444", fontSize: "0.68rem", fontWeight: 800 }}>
-              RECOMMENDED PICK
+              {t.recLabel}
             </span>
             <h3 style={{ margin: "0.25rem 0", fontSize: "1.1rem" }}>
               {recommendedSneaker.name} ({recommendedSneaker.price})
             </h3>
             <p style={{ margin: 0, fontSize: "0.84rem", color: "#d4d4d4" }}>
-              {recommendedSneaker.summary}
+              {lang === "ES" ? recommendedSneaker.summaryEs : recommendedSneaker.summaryEn}
             </p>
           </div>
         </div>
@@ -982,10 +1178,10 @@ export default function HomePage() {
         }}
       >
         <p style={{ color: "#dc2626", fontSize: "0.7rem", fontWeight: 800, margin: "0 0 0.25rem 0" }}>
-          THE NAMES SHAPING THE GAME
+          {t.brandsKicker}
         </p>
         <h2 style={{ fontSize: "1.85rem", fontWeight: 900, margin: "0 0 1.25rem 0" }}>
-          EXPLORE BRANDS
+          {t.brandsTitle}
         </h2>
 
         <div
@@ -1032,10 +1228,10 @@ export default function HomePage() {
       >
         <div style={{ maxWidth: "1120px", margin: "0 auto" }}>
           <p style={{ color: "#ef4444", fontSize: "0.7rem", fontWeight: 800, margin: "0 0 0.25rem 0" }}>
-            BUILT TO GROW
+            {t.systemKicker}
           </p>
           <h2 style={{ fontSize: "2rem", fontWeight: 900, margin: "0 0 1.5rem 0" }}>
-            THE D.BELL SYSTEM
+            {t.systemTitle}
           </h2>
 
           <div
@@ -1046,24 +1242,24 @@ export default function HomePage() {
             }}
           >
             <div style={{ backgroundColor: "#18181b", border: "1px solid #27272a", padding: "1.25rem" }}>
-              <span style={{ color: "#ef4444", fontSize: "0.7rem", fontWeight: 800 }}>01 / EDITORIAL</span>
-              <h3 style={{ margin: "0.4rem 0", fontSize: "1.15rem" }}>TEST LAB</h3>
+              <span style={{ color: "#ef4444", fontSize: "0.7rem", fontWeight: 800 }}>{t.sys1Tag}</span>
+              <h3 style={{ margin: "0.4rem 0", fontSize: "1.15rem" }}>{t.sys1Title}</h3>
               <p style={{ color: "#a3a3a3", fontSize: "0.86rem", margin: 0 }}>
-                Transparent product testing, clear criteria and honest limitations.
+                {t.sys1Body}
               </p>
             </div>
             <div style={{ backgroundColor: "#18181b", border: "1px solid #27272a", padding: "1.25rem" }}>
-              <span style={{ color: "#ef4444", fontSize: "0.7rem", fontWeight: 800 }}>02 / INTELLIGENCE</span>
-              <h3 style={{ margin: "0.4rem 0", fontSize: "1.15rem" }}>D.BELL SCORE</h3>
+              <span style={{ color: "#ef4444", fontSize: "0.7rem", fontWeight: 800 }}>{t.sys2Tag}</span>
+              <h3 style={{ margin: "0.4rem 0", fontSize: "1.15rem" }}>{t.sys2Title}</h3>
               <p style={{ color: "#a3a3a3", fontSize: "0.86rem", margin: 0 }}>
-                A weighted editorial framework for comfort, construction, design, value and versatility.
+                {t.sys2Body}
               </p>
             </div>
             <div style={{ backgroundColor: "#18181b", border: "1px solid #27272a", padding: "1.25rem" }}>
-              <span style={{ color: "#ef4444", fontSize: "0.7rem", fontWeight: 800 }}>03 / COMMERCE</span>
-              <h3 style={{ margin: "0.4rem 0", fontSize: "1.15rem" }}>MULTI-RETAILER</h3>
+              <span style={{ color: "#ef4444", fontSize: "0.7rem", fontWeight: 800 }}>{t.sys3Tag}</span>
+              <h3 style={{ margin: "0.4rem 0", fontSize: "1.15rem" }}>{t.sys3Title}</h3>
               <p style={{ color: "#a3a3a3", fontSize: "0.86rem", margin: 0 }}>
-                Designed to connect authorized retailers and drop calendars cleanly.
+                {t.sys3Body}
               </p>
             </div>
           </div>
@@ -1091,10 +1287,10 @@ export default function HomePage() {
         >
           <div>
             <p style={{ fontSize: "0.7rem", fontWeight: 800, letterSpacing: "0.1em", margin: "0 0 0.25rem 0" }}>
-              STAY IN THE LOOP
+              {t.footerKicker}
             </p>
             <h2 style={{ fontSize: "1.85rem", fontWeight: 900, margin: 0 }}>
-              GET THE NEXT DROP.
+              {t.footerTitle}
             </h2>
           </div>
 
@@ -1110,7 +1306,7 @@ export default function HomePage() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Your email address"
+              placeholder={t.placeholder}
               style={{
                 padding: "0.75rem 1rem",
                 border: "none",
@@ -1131,7 +1327,7 @@ export default function HomePage() {
                 cursor: "pointer",
               }}
             >
-              {subscribed ? "JOINED ✓" : "SIGN ME UP ↗"}
+              {subscribed ? t.joined : t.submit}
             </button>
           </form>
         </div>
