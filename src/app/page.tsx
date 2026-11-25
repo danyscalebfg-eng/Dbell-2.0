@@ -14,110 +14,68 @@ type Sneaker = {
   badgeEn: string;
   score: number;
   price: string;
-  summaryEs: string;
-  summaryEn: string;
+  image: string;
+  accent: string;
   fitEs: string;
   fitEn: string;
-  accent: string;
-  code: string;
 };
 
 const SNEAKERS: Sneaker[] = [
   {
-    id: "pegasus-41",
-    name: "Pegasus 41",
-    brand: "NIKE · RUNNING",
-    category: "RUNNING",
-    badgeEs: "RODAJE DIARIO",
-    badgeEn: "DAILY RUNNING",
-    score: 88,
-    price: "€139*",
-    summaryEs: "Zapatilla versátil para rodajes diarios con respuesta equilibrada.",
-    summaryEn: "Versatile daily trainer with balanced and responsive cushioning.",
-    fitEs: "Talla habitual · Amortiguación reactiva para asfalto.",
-    fitEn: "True to size · Responsive cushioning for road runs.",
-    accent: "#991b1b",
-    code: "NK-P41",
-  },
-  {
-    id: "ultraboost",
-    name: "Ultraboost",
-    brand: "ADIDAS · RUNNING",
-    category: "RUNNING",
-    badgeEs: "ENFOQUE CONFORT",
-    badgeEn: "COMFORT FOCUS",
-    score: 90,
-    price: "€180*",
-    summaryEs: "Enfocada en suavidad prolongada y sensación envolvente en el pie.",
-    summaryEn: "Focused on long-lasting softness and a snug, supportive feel.",
-    fitEs: "Ajuste tipo calcetín · Ideal para uso prolongado y caminar.",
-    fitEn: "Sock-like fit · Great for all-day wear and walking.",
-    accent: "#1e293b",
-    code: "AD-UB01",
-  },
-  {
     id: "nb-9060",
     name: "9060",
-    brand: "NEW BALANCE · LIFESTYLE",
+    brand: "NEW BALANCE / LIFESTYLE",
     category: "LIFESTYLE",
     badgeEs: "ICONO URBANO",
     badgeEn: "STREET ICON",
     score: 89,
     price: "€190*",
-    summaryEs: "Silueta urbana de suela esculpida inspirada en el archivo running.",
-    summaryEn: "Sculpted street silhouette rooted in running heritage.",
-    fitEs: "Horma equilibrada · Estética marcada para calle y diario.",
-    fitEn: "Balanced fit · Bold proportions for everyday street style.",
-    accent: "#334155",
-    code: "NB-9060",
+    image: "/images/sneaker-9060.jpg",
+    accent: "#27272a",
+    fitEs: "Horma equilibrada · Demo catalogue — verify specifications before publication.",
+    fitEn: "Balanced fit · Demo catalogue — verify specifications before publication.",
   },
   {
-    id: "chuck-70",
-    name: "Chuck 70",
-    brand: "CONVERSE · LIFESTYLE",
-    category: "LIFESTYLE",
-    badgeEs: "CLÁSICO DIARIO",
-    badgeEn: "EVERYDAY CLASSIC",
-    score: 84,
-    price: "€95*",
-    summaryEs: "Clásico atemporal con lona más densa y plantilla reforzada.",
-    summaryEn: "Timeless classic with heavier canvas and reinforced footbed.",
-    fitEs: "Perfil clásico · Combina con estilo casual y urbano.",
-    fitEn: "Classic profile · Easy pairing for casual daily outfits.",
-    accent: "#44403c",
-    code: "CV-C70",
+    id: "gel-nimbus",
+    name: "Gel-Nimbus",
+    brand: "ASICS / RUNNING",
+    category: "RUNNING",
+    badgeEs: "MÁXIMA AMORTIGUACIÓN",
+    badgeEn: "MAX CUSHIONING",
+    score: 92,
+    price: "€200*",
+    image: "/images/sneaker-nimbus.jpg",
+    accent: "#1e293b",
+    fitEs: "Amortiguación suave · Demo catalogue — verify specifications before publication.",
+    fitEn: "Plush cushioning · Demo catalogue — verify specifications before publication.",
   },
   {
-    id: "clifton",
-    name: "Clifton",
-    brand: "HOKA · WALKING",
+    id: "speed-training",
+    name: "Speed Trainer",
+    brand: "NIKE / TRAINING",
     category: "TRAINING",
-    badgeEs: "AMORTIGUACIÓN LIGERA",
-    badgeEn: "LIGHT CUSHIONING",
-    score: 90,
-    price: "€150*",
-    summaryEs: "Amortiguación generosa con peso contenido para largas jornadas.",
-    summaryEn: "Generous cushioning at a light weight for long days on foot.",
-    fitEs: "Pisada fluida · Prioridad absoluta en comodidad y suavidad.",
-    fitEn: "Smooth stride · Built around plush comfort and ease.",
-    accent: "#7f1d1d",
-    code: "HK-CLF",
+    badgeEs: "ENTRENAMIENTO RÁPIDO",
+    badgeEn: "SPEED TRAINING",
+    score: 88,
+    price: "€155*",
+    image: "/images/sneaker-training.jpg",
+    accent: "#3f3f46",
+    fitEs: "Respuesta ágil · Demo catalogue — verify specifications before publication.",
+    fitEn: "Agile response · Demo catalogue — verify specifications before publication.",
   },
   {
     id: "aj1",
     name: "Air Jordan 1",
-    brand: "JORDAN · BASKETBALL",
+    brand: "JORDAN / BASKETBALL",
     category: "BASKETBALL",
     badgeEs: "HERENCIA DE CANCHA",
     badgeEn: "COURT HERITAGE",
-    score: 86,
+    score: 87,
     price: "€180*",
-    summaryEs: "Referente histórico nacido en la cancha y consolidado en cultura urbana.",
-    summaryEn: "Historic court icon that shaped modern sneaker culture.",
-    fitEs: "Estructura firme · Ícono de colección y uso diario.",
-    fitEn: "Structured build · Classic rotation staple.",
-    accent: "#18181b",
-    code: "JD-AJ1",
+    image: "/images/sneaker-aj1.jpg",
+    accent: "#7f1d1d",
+    fitEs: "Clásico de cancha · Demo catalogue — verify specifications before publication.",
+    fitEn: "Court heritage · Demo catalogue — verify specifications before publication.",
   },
 ];
 
@@ -142,220 +100,103 @@ const BRANDS = [
   "DR. MARTENS",
 ];
 
-const UI_TEXT = {
-  ES: {
-    topLeft: "CULTURA SNEAKER INDEPENDIENTE Y RENDIMIENTO",
-    topRight: "DESCUBRE · COMPARA · ENCUENTRA TU PAR",
-    nav: ["REVISTA", "ANÁLISIS", "COMPARAR", "BUSCADOR", "MARCAS", "LANZAMIENTOS"],
-    listBtn: "LISTA",
-    kicker: "LA PLATAFORMA INTERNACIONAL DE SNEAKERS",
-    heroTitleLine1: "ENCUENTRA TU",
-    heroTitleLine2: "PRÓXIMO PASO",
-    heroDesc:
-      "Perspectiva independiente sobre sneakers, rendimiento y cultura urbana. Descubre el par que se mueve contigo.",
-    ctaPrimary: "EXPLORAR SNEAKERS →",
-    ctaSecondary: "BUSCAR TU PAR",
-    archiveTag: "EDICIÓN 001",
-    archiveTitle: "ARCHIVO DE PISTA Y ASFALTO",
-    archiveDesc:
-      "Selección editorial de confort para correr, uso diario e iconos de cancha.",
-    ticker: [
-      "RENDIMIENTO",
-      "CULTURA URBANA",
-      "NUEVOS LANZAMIENTOS",
-      "PERSPECTIVA REAL",
-      "ENCUENTRA TU PRÓXIMO PAR",
-    ],
-    editTag: "LA SELECCIÓN · 001",
-    featuredTitle: "SNEAKERS DESTACADAS",
-    featuredNote:
-      "Selección inicial de deporte, confort diario y streetwear. Catálogo de muestra: verifica especificaciones antes de comprar.",
-    catAll: "TODAS",
-    addCompare: "+ COMPARAR",
-    inCompare: "EN LISTA ✓",
-    details: "DETALLES ↗",
-    selectedPrefix: "MODELO SELECCIONADO",
-    close: "CERRAR",
-    editorialKicker: "HISTORIAS, CULTURA Y PERSPECTIVA",
-    editorialTitle: "MÁS ALLÁ DE LA SNEAKER",
-    editorialDesc:
-      "Ideas editoriales para una comunidad global. Los artículos mostrados son ejemplos.",
-    story1Tag: "CULTURA",
-    story1Title: "MÁS QUE UNA SILUETA",
-    story1Body:
-      "Cómo las zapatillas conectan deporte, identidad, diseño y vida diaria.",
-    story1Cta: "EXPLORAR CULTURA ↗",
-    story2Tag: "GUÍA DE USO",
-    story2Title: "ELIGE CON PROPÓSITO",
-    story2Body:
-      "Entiende amortiguación, ajuste y uso antes de elegir tu próximo par.",
-    story2Cta: "BUSCAR TU PAR ↗",
-    compareKicker: "DECIDE BIEN",
-    compareTitle: "TU LISTA COMPARATIVA",
-    compareDesc:
-      "Elige hasta tres modelos en las tarjetas para compararlos lado a lado.",
-    remove: "Quitar",
-    finderKicker: "MATCH RÁPIDO",
-    finderTitle: "¿QUÉ ES LO MÁS IMPORTANTE?",
-    priorityLabel: "Selecciona tu prioridad",
-    priorities: [
-      { value: "Comfort", label: "Confort" },
-      { value: "Versatility", label: "Versatilidad" },
-      { value: "Style", label: "Estilo" },
-    ],
-    recLabel: "ELECCIÓN RECOMENDADA",
-    brandsKicker: "LAS MARCAS QUE MARCAN EL RITMO",
-    brandsTitle: "EXPLORAR MARCAS",
-    systemKicker: "HECHO PARA CRECER",
-    systemTitle: "EL SISTEMA D.BELL",
-    sys1Tag: "01 / EDITORIAL",
-    sys1Title: "LABORATORIO DE PRUEBAS",
-    sys1Body:
-      "Pruebas transparentes, criterios claros y límites honestos en cada modelo.",
-    sys2Tag: "02 / ANÁLISIS",
-    sys2Title: "PUNTUACIÓN D.BELL",
-    sys2Body:
-      "Marco ponderado de confort, construcción, diseño, valor y versatilidad.",
-    sys3Tag: "03 / TIENDAS",
-    sys3Title: "MULTITIENDA",
-    sys3Body:
-      "Pensado para conectar distribuidores autorizados y calendarios de lanzamientos.",
-    footerKicker: "NO TE PIERDAS NADA",
-    footerTitle: "RECIBE EL PRÓXIMO DROP.",
-    placeholder: "Tu correo electrónico",
-    submit: "APUNTARME ↗",
-    joined: "APUNTADO ✓",
-  },
-  EN: {
-    topLeft: "INDEPENDENT SNEAKER CULTURE & PERFORMANCE",
-    topRight: "DISCOVER · COMPARE · FIND YOUR PAIR",
-    nav: ["MAGAZINE", "REVIEWS", "COMPARE", "FINDER", "BRANDS", "RELEASES"],
-    listBtn: "LIST",
-    kicker: "THE INTERNATIONAL SNEAKER PLATFORM",
-    heroTitleLine1: "FIND YOUR",
-    heroTitleLine2: "NEXT MOVE",
-    heroDesc:
-      "Independent perspective on sneakers, performance and street culture. Discover the pair that moves with you.",
-    ctaPrimary: "EXPLORE SNEAKERS →",
-    ctaSecondary: "FIND YOUR PAIR",
-    archiveTag: "EDITION 001",
-    archiveTitle: "COURT & ROAD ARCHIVE",
-    archiveDesc:
-      "Curated comparison of running comfort, daily lifestyle and court icons.",
-    ticker: [
-      "PERFORMANCE",
-      "STREET CULTURE",
-      "NEW RELEASES",
-      "REAL PERSPECTIVE",
-      "DISCOVER YOUR NEXT PAIR",
-    ],
-    editTag: "THE EDIT · 001",
-    featuredTitle: "FEATURED SNEAKERS",
-    featuredNote:
-      "A starting selection across sport, everyday comfort and streetwear. Demo catalogue — verify specifications before purchase.",
-    catAll: "ALL SNEAKERS",
-    addCompare: "+ ADD TO COMPARE",
-    inCompare: "IN COMPARE ✓",
-    details: "DETAILS ↗",
-    selectedPrefix: "SELECTED MODEL",
-    close: "CLOSE",
-    editorialKicker: "STORIES, CULTURE & PERSPECTIVE",
-    editorialTitle: "BEYOND THE SNEAKER",
-    editorialDesc:
-      "Editorial ideas for a global sneaker audience. Articles shown here are sample concepts.",
-    story1Tag: "CULTURE FEATURE",
-    story1Title: "MORE THAN A SILHOUETTE",
-    story1Body:
-      "How sneakers move between sport, identity, design and everyday life.",
-    story1Cta: "EXPLORE THE CULTURE ↗",
-    story2Tag: "PERFORMANCE GUIDE",
-    story2Title: "CHOOSE WITH PURPOSE",
-    story2Body:
-      "Understand cushioning, fit and use before choosing your next pair.",
-    story2Cta: "FIND YOUR PAIR ↗",
-    compareKicker: "MAKE THE RIGHT CALL",
-    compareTitle: "COMPARE YOUR SHORTLIST",
-    compareDesc:
-      "Select up to three models in the sneaker cards to compare side by side.",
-    remove: "Remove",
-    finderKicker: "QUICK MATCH",
-    finderTitle: "WHAT MATTERS MOST?",
-    priorityLabel: "Select your priority",
-    priorities: [
-      { value: "Comfort", label: "Comfort" },
-      { value: "Versatility", label: "Versatility" },
-      { value: "Style", label: "Style" },
-    ],
-    recLabel: "RECOMMENDED PICK",
-    brandsKicker: "THE NAMES SHAPING THE GAME",
-    brandsTitle: "EXPLORE BRANDS",
-    systemKicker: "BUILT TO GROW",
-    systemTitle: "THE D.BELL SYSTEM",
-    sys1Tag: "01 / EDITORIAL",
-    sys1Title: "TEST LAB",
-    sys1Body:
-      "Transparent product testing, clear criteria and honest limitations.",
-    sys2Tag: "02 / INTELLIGENCE",
-    sys2Title: "D.BELL SCORE",
-    sys2Body:
-      "A weighted editorial framework for comfort, construction, design, value and versatility.",
-    sys3Tag: "03 / COMMERCE",
-    sys3Title: "MULTI-RETAILER",
-    sys3Body:
-      "Designed to connect authorized retailers and drop calendars cleanly.",
-    footerKicker: "STAY IN THE LOOP",
-    footerTitle: "GET THE NEXT DROP.",
-    placeholder: "Your email address",
-    submit: "SIGN ME UP ↗",
-    joined: "JOINED ✓",
-  },
-} as const;
+function VisualFrame({
+  src,
+  alt,
+  accent,
+  height = "210px",
+  children,
+}: {
+  src: string;
+  alt: string;
+  accent: string;
+  height?: string;
+  children?: React.ReactNode;
+}) {
+  const [imgError, setImgError] = useState(false);
+
+  return (
+    <div
+      style={{
+        position: "relative",
+        width: "100%",
+        height,
+        background: `linear-gradient(135deg, ${accent} 0%, #111111 100%)`,
+        overflow: "hidden",
+      }}
+    >
+      {!imgError && (
+        <img
+          src={src}
+          alt={alt}
+          onError={() => setImgError(true)}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            display: "block",
+          }}
+        />
+      )}
+      <div
+        style={{
+          position: "relative",
+          zIndex: 2,
+          width: "100%",
+          height: "100%",
+          background:
+            "linear-gradient(180deg, rgba(17,17,17,0.25) 0%, rgba(17,17,17,0.78) 100%)",
+          padding: "1rem",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+        }}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
 
 export default function HomePage() {
-  const [lang, setLang] = useState<Lang>("ES");
-  const [selectedCategory, setSelectedCategory] = useState<Category>("ALL");
+  const [lang, setLang] = useState<Lang>("EN");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const [category, setCategory] = useState<Category>("ALL");
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
-  const [compareIds, setCompareIds] = useState<string[]>(["pegasus-41", "ultraboost"]);
-  const [activeDetailId, setActiveDetailId] = useState<string | null>("pegasus-41");
-  const [priority, setPriority] = useState<string>("Comfort");
-  const [email, setEmail] = useState<string>("");
-  const [subscribed, setSubscribed] = useState<boolean>(false);
+  const [compareIds, setCompareIds] = useState<string[]>(["nb-9060", "gel-nimbus"]);
+  const [activeDetail, setActiveDetail] = useState<Sneaker | null>(null);
+  const [priority, setPriority] = useState("Comfort");
+  const [email, setEmail] = useState("");
+  const [joined, setJoined] = useState(false);
 
-  const t = UI_TEXT[lang];
-  const categories: { key: Category; label: string }[] = [
-    { key: "ALL", label: t.catAll },
-    { key: "RUNNING", label: "RUNNING" },
-    { key: "LIFESTYLE", label: "LIFESTYLE" },
-    { key: "TRAINING", label: "TRAINING" },
-    { key: "BASKETBALL", label: "BASKETBALL" },
-  ];
+  const isEs = lang === "ES";
 
-  const visibleSneakers = SNEAKERS.filter((item) => {
-    const matchesCategory =
-      selectedCategory === "ALL" || item.category === selectedCategory;
-    const matchesBrand =
+  const filtered = SNEAKERS.filter((item) => {
+    const byCat = category === "ALL" || item.category === category;
+    const byBrand =
       !selectedBrand || item.brand.toUpperCase().includes(selectedBrand);
-    return matchesCategory && matchesBrand;
+    const byQuery =
+      !query.trim() ||
+      item.name.toLowerCase().includes(query.toLowerCase()) ||
+      item.brand.toLowerCase().includes(query.toLowerCase());
+    return byCat && byBrand && byQuery;
   });
 
-  const comparedSneakers = SNEAKERS.filter((item) => compareIds.includes(item.id));
-  const activeDetail = SNEAKERS.find((item) => item.id === activeDetailId) ?? null;
+  const comparedItems = SNEAKERS.filter((s) => compareIds.includes(s.id));
 
-  const recommendedSneaker =
+  const pickedSneaker =
     priority === "Style"
-      ? SNEAKERS.find((s) => s.id === "nb-9060") ?? SNEAKERS[0]
+      ? SNEAKERS[0]
       : priority === "Versatility"
-      ? SNEAKERS.find((s) => s.id === "pegasus-41") ?? SNEAKERS[0]
-      : SNEAKERS.find((s) => s.id === "ultraboost") ?? SNEAKERS[0];
+      ? SNEAKERS[2]
+      : SNEAKERS[1];
 
   function toggleCompare(id: string) {
     setCompareIds((prev) => {
-      if (prev.includes(id)) {
-        return prev.filter((item) => item !== id);
-      }
-      if (prev.length >= 3) {
-        return [...prev.slice(1), id];
-      }
+      if (prev.includes(id)) return prev.filter((x) => x !== id);
+      if (prev.length >= 3) return [...prev.slice(1), id];
       return [...prev, id];
     });
   }
@@ -364,7 +205,7 @@ export default function HomePage() {
     <main
       style={{
         minHeight: "100vh",
-        backgroundColor: "#f7f6f2",
+        backgroundColor: "#f6f5f1",
         color: "#111111",
         fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
       }}
@@ -374,8 +215,8 @@ export default function HomePage() {
         style={{
           backgroundColor: "#141414",
           color: "#a3a3a3",
-          fontSize: "0.7rem",
-          letterSpacing: "0.08em",
+          fontSize: "0.68rem",
+          letterSpacing: "0.09em",
           padding: "0.5rem 1.25rem",
           display: "flex",
           flexWrap: "wrap",
@@ -384,240 +225,265 @@ export default function HomePage() {
           borderBottom: "1px solid #262626",
         }}
       >
-        <span>{t.topLeft}</span>
-        <span>{t.topRight}</span>
+        <span>
+          {isEs
+            ? "CULTURA SNEAKER INDEPENDIENTE Y RENDIMIENTO"
+            : "INDEPENDENT SNEAKER CULTURE & PERFORMANCE"}
+        </span>
+        <span>
+          {isEs
+            ? "DESCUBRE · COMPARA · ENCUENTRA TU PAR"
+            : "DISCOVER · COMPARE · FIND YOUR PAIR"}
+        </span>
       </div>
 
-      {/* Header */}
+      {/* Main Header */}
       <header
         style={{
           backgroundColor: "#111111",
           color: "#ffffff",
-          padding: "1rem 1.25rem",
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: "1rem",
+          padding: "0.9rem 1.25rem",
           position: "sticky",
           top: 0,
-          zIndex: 20,
+          zIndex: 30,
           borderBottom: "1px solid #262626",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "1.5rem", flexWrap: "wrap" }}>
+        <div
+          style={{
+            maxWidth: "1160px",
+            margin: "0 auto",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            gap: "1rem",
+          }}
+        >
           <a
             href="#top"
             style={{
               color: "#ffffff",
               textDecoration: "none",
               fontWeight: 900,
-              fontSize: "1.25rem",
-              letterSpacing: "0.04em",
+              fontSize: "1.3rem",
+              letterSpacing: "-0.02em",
             }}
           >
-            D.BELL
+            D<span style={{ color: "#dc2626" }}>.</span>BELL
           </a>
-          <nav
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "0.95rem",
-              fontSize: "0.72rem",
-              fontWeight: 700,
-              letterSpacing: "0.08em",
-              color: "#d4d4d4",
-            }}
-          >
-            <a href="#editorial" style={{ color: "inherit", textDecoration: "none" }}>{t.nav[0]}</a>
-            <a href="#featured" style={{ color: "inherit", textDecoration: "none" }}>{t.nav[1]}</a>
-            <a href="#compare" style={{ color: "inherit", textDecoration: "none" }}>{t.nav[2]}</a>
-            <a href="#finder" style={{ color: "inherit", textDecoration: "none" }}>{t.nav[3]}</a>
-            <a href="#brands" style={{ color: "inherit", textDecoration: "none" }}>{t.nav[4]}</a>
-            <a href="#system" style={{ color: "inherit", textDecoration: "none" }}>{t.nav[5]}</a>
-          </nav>
+
+          <div style={{ display: "flex", alignItems: "center", gap: "0.45rem" }}>
+            <button
+              type="button"
+              onClick={() => setLang((prev) => (prev === "EN" ? "ES" : "EN"))}
+              style={{
+                backgroundColor: "#1c1c1c",
+                color: "#ffffff",
+                border: "1px solid #3f3f46",
+                padding: "0.42rem 0.65rem",
+                fontSize: "0.72rem",
+                fontWeight: 800,
+                cursor: "pointer",
+              }}
+            >
+              {lang} ▾
+            </button>
+
+            <button
+              type="button"
+              aria-label="Search"
+              onClick={() => setSearchOpen((prev) => !prev)}
+              style={{
+                backgroundColor: "#1c1c1c",
+                color: "#ffffff",
+                border: "1px solid #3f3f46",
+                padding: "0.42rem 0.65rem",
+                fontSize: "0.78rem",
+                cursor: "pointer",
+              }}
+            >
+              ⌕
+            </button>
+
+            <button
+              type="button"
+              aria-label="Menu"
+              onClick={() => setMenuOpen((prev) => !prev)}
+              style={{
+                backgroundColor: "#1c1c1c",
+                color: "#ffffff",
+                border: "1px solid #3f3f46",
+                padding: "0.42rem 0.65rem",
+                fontSize: "0.78rem",
+                cursor: "pointer",
+              }}
+            >
+              {menuOpen ? "✕" : "☰"}
+            </button>
+          </div>
         </div>
 
-        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.72rem" }}>
-          <button
-            type="button"
-            onClick={() => setLang((prev) => (prev === "ES" ? "EN" : "ES"))}
+        {searchOpen && (
+          <div style={{ maxWidth: "1160px", margin: "0.75rem auto 0 auto" }}>
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder={
+                isEs ? "Buscar modelo o marca..." : "Search sneaker or brand..."
+              }
+              style={{
+                width: "100%",
+                padding: "0.65rem 0.85rem",
+                backgroundColor: "#1c1c1c",
+                color: "#ffffff",
+                border: "1px solid #3f3f46",
+                fontSize: "0.88rem",
+              }}
+            />
+          </div>
+        )}
+
+        {menuOpen && (
+          <nav
             style={{
-              backgroundColor: "#262626",
-              color: "#ffffff",
-              border: "1px solid #525252",
-              padding: "0.35rem 0.65rem",
+              maxWidth: "1160px",
+              margin: "0.75rem auto 0 auto",
+              paddingTop: "0.75rem",
+              borderTop: "1px solid #262626",
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "1rem",
+              fontSize: "0.75rem",
               fontWeight: 800,
-              cursor: "pointer",
+              letterSpacing: "0.08em",
             }}
           >
-            {lang === "ES" ? "ES / EN → EN" : "EN / ES → ES"}
-          </button>
-          <a
-            href="#compare"
-            style={{
-              backgroundColor: "#dc2626",
-              color: "#ffffff",
-              padding: "0.35rem 0.65rem",
-              fontWeight: 800,
-              textDecoration: "none",
-            }}
-          >
-            {t.listBtn} ({compareIds.length})
-          </a>
-        </div>
+            <a href="#featured" onClick={() => setMenuOpen(false)} style={{ color: "#ffffff", textDecoration: "none" }}>
+              {isEs ? "DESTACADAS" : "FEATURED"}
+            </a>
+            <a href="#editorial" onClick={() => setMenuOpen(false)} style={{ color: "#ffffff", textDecoration: "none" }}>
+              {isEs ? "REVISTA" : "MAGAZINE"}
+            </a>
+            <a href="#compare" onClick={() => setMenuOpen(false)} style={{ color: "#ffffff", textDecoration: "none" }}>
+              {isEs ? "COMPARAR" : "COMPARE"} ({compareIds.length})
+            </a>
+            <a href="#brands" onClick={() => setMenuOpen(false)} style={{ color: "#ffffff", textDecoration: "none" }}>
+              {isEs ? "MARCAS" : "BRANDS"}
+            </a>
+            <a href="#drop" onClick={() => setMenuOpen(false)} style={{ color: "#ef4444", textDecoration: "none" }}>
+              {isEs ? "PRÓXIMO DROP" : "NEXT DROP"}
+            </a>
+          </nav>
+        )}
       </header>
 
       {/* Hero Section */}
       <section
         id="top"
         style={{
-          background:
-            "linear-gradient(120deg, #111111 0%, #1c1917 58%, #291515 100%)",
+          position: "relative",
+          backgroundColor: "#141414",
           color: "#ffffff",
-          padding: "3.5rem 1.25rem",
+          overflow: "hidden",
         }}
       >
         <div
           style={{
-            maxWidth: "1120px",
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "2rem",
-            alignItems: "center",
+            position: "relative",
+            minHeight: "430px",
+            background:
+              "radial-gradient(circle at 75% 45%, rgba(220,38,38,0.28), rgba(20,20,20,0.94) 68%), url('/images/hero-sneaker.jpg') center/cover no-repeat",
+            padding: "3rem 1.25rem",
+            display: "flex",
+            alignItems: "flex-end",
           }}
         >
-          <div>
+          <div style={{ maxWidth: "1160px", width: "100%", margin: "0 auto" }}>
             <p
               style={{
                 color: "#ef4444",
                 fontSize: "0.72rem",
                 fontWeight: 800,
                 letterSpacing: "0.14em",
-                margin: "0 0 0.85rem 0",
+                margin: "0 0 0.75rem 0",
               }}
             >
-              {t.kicker}
+              {isEs
+                ? "LA PLATAFORMA INTERNACIONAL DE SNEAKERS"
+                : "THE INTERNATIONAL SNEAKER PLATFORM"}
             </p>
             <h1
               style={{
-                fontSize: "clamp(2.4rem, 6vw, 4.2rem)",
-                lineHeight: 0.98,
+                fontSize: "clamp(2.5rem, 7vw, 4.4rem)",
+                lineHeight: 0.96,
                 fontWeight: 900,
                 letterSpacing: "-0.02em",
-                margin: "0 0 1.1rem 0",
+                margin: "0 0 1rem 0",
               }}
             >
-              {t.heroTitleLine1}
+              {isEs ? "ENCUENTRA TU" : "FIND YOUR"}
               <br />
-              {t.heroTitleLine2}
+              {isEs ? "PRÓXIMO PASO" : "NEXT MOVE"}
               <span style={{ color: "#dc2626" }}>.</span>
             </h1>
             <p
               style={{
-                color: "#d4d4d4",
-                fontSize: "0.98rem",
-                lineHeight: 1.6,
+                color: "#e5e5e5",
                 maxWidth: "490px",
-                margin: "0 0 1.6rem 0",
+                fontSize: "0.96rem",
+                lineHeight: 1.55,
+                margin: "0 0 1.5rem 0",
               }}
             >
-              {t.heroDesc}
+              {isEs
+                ? "Perspectiva independiente sobre sneakers, rendimiento y cultura urbana. Descubre el par que se mueve contigo."
+                : "Independent perspective on sneakers, performance and street culture. Discover the pair that moves with you."}
             </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
-              <a
-                href="#featured"
-                style={{
-                  backgroundColor: "#dc2626",
-                  color: "#ffffff",
-                  padding: "0.8rem 1.2rem",
-                  fontSize: "0.75rem",
-                  fontWeight: 800,
-                  letterSpacing: "0.08em",
-                  textDecoration: "none",
-                }}
-              >
-                {t.ctaPrimary}
-              </a>
-              <a
-                href="#finder"
-                style={{
-                  border: "1px solid #525252",
-                  color: "#ffffff",
-                  padding: "0.8rem 1.2rem",
-                  fontSize: "0.75rem",
-                  fontWeight: 800,
-                  letterSpacing: "0.08em",
-                  textDecoration: "none",
-                }}
-              >
-                {t.ctaSecondary}
-              </a>
-            </div>
-          </div>
 
-          {/* Visual Showcase Panel */}
-          <div
-            style={{
-              backgroundColor: "#18181b",
-              border: "1px solid #27272a",
-              padding: "1.25rem",
-            }}
-          >
-            <div
-              style={{
-                background:
-                  "linear-gradient(135deg, #27272a 0%, #111111 60%, #7f1d1d 100%)",
-                border: "1px solid #3f3f46",
-                padding: "2rem 1.25rem",
-                marginBottom: "0.9rem",
-                position: "relative",
-                overflow: "hidden",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  marginBottom: "1rem",
-                }}
-              >
-                <span
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", alignItems: "center", justifyContent: "space-between" }}>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
+                <a
+                  href="#featured"
                   style={{
                     backgroundColor: "#dc2626",
                     color: "#ffffff",
-                    fontSize: "0.68rem",
+                    padding: "0.78rem 1.15rem",
+                    fontSize: "0.74rem",
                     fontWeight: 800,
-                    letterSpacing: "0.1em",
-                    padding: "0.25rem 0.5rem",
+                    letterSpacing: "0.08em",
+                    textDecoration: "none",
                   }}
                 >
-                  {t.archiveTag}
-                </span>
-                <span style={{ fontSize: "0.72rem", fontWeight: 800, color: "#fca5a5" }}>
-                  DB-01
-                </span>
+                  {isEs ? "EXPLORAR SNEAKERS ↗" : "EXPLORE SNEAKERS ↗"}
+                </a>
+                <a
+                  href="#compare"
+                  style={{
+                    backgroundColor: "rgba(17,17,17,0.75)",
+                    border: "1px solid #737373",
+                    color: "#ffffff",
+                    padding: "0.78rem 1.15rem",
+                    fontSize: "0.74rem",
+                    fontWeight: 800,
+                    letterSpacing: "0.08em",
+                    textDecoration: "none",
+                  }}
+                >
+                  {isEs ? "BUSCAR TU PAR" : "FIND YOUR PAIR"}
+                </a>
               </div>
-              <p style={{ fontSize: "1.45rem", fontWeight: 900, margin: "0 0 0.4rem 0" }}>
-                {t.archiveTitle}
-              </p>
-              <p style={{ color: "#d4d4d4", fontSize: "0.88rem", margin: 0 }}>
-                {t.archiveDesc}
-              </p>
+
+              <span
+                style={{
+                  color: "#d4d4d4",
+                  fontSize: "0.68rem",
+                  letterSpacing: "0.1em",
+                }}
+              >
+                EST. FOR THE NEXT GENERATION OF SNEAKER CULTURE — 001
+              </span>
             </div>
-            <p
-              style={{
-                color: "#a1a1aa",
-                fontSize: "0.7rem",
-                letterSpacing: "0.08em",
-                margin: 0,
-                textAlign: "right",
-              }}
-            >
-              EST. FOR THE NEXT GENERATION OF SNEAKER CULTURE · 001
-            </p>
           </div>
         </div>
       </section>
@@ -634,107 +500,80 @@ export default function HomePage() {
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "space-between",
-          gap: "0.75rem",
+          gap: "0.65rem",
         }}
       >
-        {t.ticker.map((item, idx) => (
-          <span key={item}>
-            {item}
-            {idx < t.ticker.length - 1 ? "  ✦" : ""}
-          </span>
-        ))}
+        <span>{isEs ? "RENDIMIENTO" : "PERFORMANCE"}</span>
+        <span>✳</span>
+        <span>{isEs ? "CULTURA URBANA" : "STREET CULTURE"}</span>
+        <span>✳</span>
+        <span>{isEs ? "NUEVOS LANZAMIENTOS" : "NEW RELEASES"}</span>
+        <span>✳</span>
+        <span>{isEs ? "PERSPECTIVA REAL" : "REAL PERSPECTIVE"}</span>
       </div>
 
-      {/* Featured Sneakers + Tabs */}
+      {/* Featured Sneakers */}
       <section
         id="featured"
         style={{
-          maxWidth: "1120px",
+          maxWidth: "1160px",
           margin: "0 auto",
           padding: "3rem 1.25rem",
         }}
       >
-        <div
+        <p
           style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-between",
-            alignItems: "flex-end",
-            gap: "1rem",
-            marginBottom: "1.5rem",
+            color: "#dc2626",
+            fontSize: "0.7rem",
+            fontWeight: 800,
+            letterSpacing: "0.12em",
+            margin: "0 0 0.3rem 0",
           }}
         >
-          <div>
-            <p
-              style={{
-                color: "#dc2626",
-                fontSize: "0.72rem",
-                fontWeight: 800,
-                letterSpacing: "0.12em",
-                margin: "0 0 0.35rem 0",
-              }}
-            >
-              {t.editTag}
-            </p>
-            <h2
-              style={{
-                fontSize: "2rem",
-                fontWeight: 900,
-                letterSpacing: "-0.01em",
-                margin: 0,
-              }}
-            >
-              {t.featuredTitle}
-            </h2>
-          </div>
+          {isEs ? "LA SELECCIÓN · 001" : "THE EDIT · 001"}
+        </p>
+        <h2 style={{ fontSize: "2rem", fontWeight: 900, margin: "0 0 0.5rem 0" }}>
+          {isEs ? "SNEAKERS DESTACADAS" : "FEATURED SNEAKERS"}
+        </h2>
+        <p style={{ color: "#525252", fontSize: "0.85rem", maxWidth: "460px", margin: "0 0 1.4rem 0" }}>
+          {isEs
+            ? "Selección inicial en deporte, confort diario y streetwear. Catálogo de muestra: verifica especificaciones antes de publicar."
+            : "A starting selection across sport, everyday comfort and streetwear. Demo catalogue — verify specifications before publication."}
+        </p>
 
-          <p
-            style={{
-              color: "#525252",
-              fontSize: "0.84rem",
-              maxWidth: "360px",
-              margin: 0,
-              lineHeight: 1.45,
-            }}
-          >
-            {t.featuredNote}
-          </p>
-        </div>
-
-        {/* Category Tabs */}
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "0.5rem",
-            marginBottom: "1.5rem",
-          }}
-        >
-          {categories.map((cat) => {
-            const active = selectedCategory === cat.key;
-            return (
-              <button
-                key={cat.key}
-                type="button"
-                onClick={() => {
-                  setSelectedCategory(cat.key);
-                  setSelectedBrand(null);
-                }}
-                style={{
-                  backgroundColor: active ? "#111111" : "#ffffff",
-                  color: active ? "#ffffff" : "#111111",
-                  border: "1px solid #111111",
-                  padding: "0.55rem 0.9rem",
-                  fontSize: "0.72rem",
-                  fontWeight: 800,
-                  letterSpacing: "0.08em",
-                  cursor: "pointer",
-                }}
-              >
-                {cat.label}
-              </button>
-            );
-          })}
+        {/* Filter Tabs */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.45rem", marginBottom: "1.5rem" }}>
+          {(["ALL", "RUNNING", "LIFESTYLE", "TRAINING", "BASKETBALL"] as Category[]).map(
+            (cat) => {
+              const active = category === cat;
+              return (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => {
+                    setCategory(cat);
+                    setSelectedBrand(null);
+                  }}
+                  style={{
+                    backgroundColor: active ? "#111111" : "#ffffff",
+                    color: active ? "#ffffff" : "#111111",
+                    border: "1px solid #111111",
+                    padding: "0.52rem 0.85rem",
+                    fontSize: "0.7rem",
+                    fontWeight: 800,
+                    letterSpacing: "0.08em",
+                    cursor: "pointer",
+                  }}
+                >
+                  {cat === "ALL"
+                    ? isEs
+                      ? "TODAS"
+                      : "ALL SNEAKERS"
+                    : cat}
+                </button>
+              );
+            }
+          )}
           {selectedBrand && (
             <button
               type="button"
@@ -742,9 +581,9 @@ export default function HomePage() {
               style={{
                 backgroundColor: "#dc2626",
                 color: "#ffffff",
-                border: "1px solid #dc2626",
-                padding: "0.55rem 0.9rem",
-                fontSize: "0.72rem",
+                border: "none",
+                padding: "0.52rem 0.85rem",
+                fontSize: "0.7rem",
                 fontWeight: 800,
                 cursor: "pointer",
               }}
@@ -754,148 +593,129 @@ export default function HomePage() {
           )}
         </div>
 
-        {/* Sneaker Cards Grid */}
+        {/* 2-Column / Responsive Cards Grid */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-            gap: "1.1rem",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: "1.25rem",
           }}
         >
-          {visibleSneakers.map((item) => {
-            const isCompared = compareIds.includes(item.id);
+          {filtered.map((item) => {
+            const inList = compareIds.includes(item.id);
             return (
               <article
                 key={item.id}
                 style={{
                   backgroundColor: "#ffffff",
                   border: "1px solid #e5e5e5",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
                 }}
               >
-                <div>
+                <VisualFrame src={item.image} alt={item.name} accent={item.accent} height="220px">
+                  <span
+                    style={{
+                      backgroundColor: "rgba(17,17,17,0.88)",
+                      color: "#ffffff",
+                      fontSize: "0.66rem",
+                      fontWeight: 800,
+                      letterSpacing: "0.08em",
+                      padding: "0.32rem 0.55rem",
+                      alignSelf: "flex-start",
+                    }}
+                  >
+                    {isEs ? item.badgeEs : item.badgeEn}
+                  </span>
+                </VisualFrame>
+
+                <div style={{ padding: "1.1rem" }}>
+                  <p
+                    style={{
+                      color: "#737373",
+                      fontSize: "0.68rem",
+                      fontWeight: 800,
+                      letterSpacing: "0.06em",
+                      margin: "0 0 0.25rem 0",
+                    }}
+                  >
+                    {item.brand}
+                  </p>
+                  <h3 style={{ fontSize: "1.25rem", fontWeight: 900, margin: "0 0 0.35rem 0" }}>
+                    {item.name}
+                  </h3>
+                  <p style={{ color: "#737373", fontSize: "0.78rem", margin: "0 0 0.9rem 0" }}>
+                    {isEs
+                      ? "Catálogo demo · Verifica ficha antes de publicar"
+                      : "Demo catalogue · verify specifications before publication"}
+                  </p>
+
                   <div
                     style={{
-                      background: `linear-gradient(135deg, ${item.accent} 0%, #111111 100%)`,
-                      color: "#ffffff",
-                      padding: "1.15rem 1.25rem",
-                      minHeight: "130px",
                       display: "flex",
-                      flexDirection: "column",
                       justifyContent: "space-between",
+                      alignItems: "baseline",
+                      borderTop: "1px solid #f0f0f0",
+                      paddingTop: "0.75rem",
+                      marginBottom: "0.9rem",
                     }}
                   >
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                      <span
-                        style={{
-                          backgroundColor: "#111111",
-                          color: "#ffffff",
-                          fontSize: "0.65rem",
-                          fontWeight: 800,
-                          letterSpacing: "0.08em",
-                          padding: "0.25rem 0.5rem",
-                        }}
-                      >
-                        {lang === "ES" ? item.badgeEs : item.badgeEn}
-                      </span>
-                      <span style={{ fontSize: "0.72rem", fontWeight: 800, opacity: 0.85 }}>
-                        {item.code}
-                      </span>
-                    </div>
-                    <span style={{ fontSize: "0.72rem", letterSpacing: "0.08em", opacity: 0.9 }}>
-                      {item.category}
-                    </span>
-                  </div>
-
-                  <div style={{ padding: "1rem" }}>
-                    <p
-                      style={{
-                        color: "#737373",
-                        fontSize: "0.68rem",
-                        fontWeight: 700,
-                        letterSpacing: "0.06em",
-                        margin: "0 0 0.25rem 0",
-                      }}
-                    >
-                      {item.brand}
-                    </p>
-                    <h3 style={{ fontSize: "1.15rem", fontWeight: 800, margin: "0 0 0.45rem 0" }}>
-                      {item.name}
-                    </h3>
-                    <p style={{ color: "#525252", fontSize: "0.86rem", lineHeight: 1.45, margin: "0 0 0.9rem 0" }}>
-                      {lang === "ES" ? item.summaryEs : item.summaryEn}
-                    </p>
-
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "baseline",
-                        borderTop: "1px solid #f0f0f0",
-                        paddingTop: "0.7rem",
-                      }}
-                    >
-                      <div>
-                        <strong style={{ fontSize: "1.25rem", fontWeight: 900 }}>
-                          {item.score}
-                        </strong>
-                        <span style={{ color: "#737373", fontSize: "0.75rem" }}> / 100</span>
-                        <div style={{ color: "#737373", fontSize: "0.65rem", fontWeight: 700 }}>
-                          D.BELL SCORE*
-                        </div>
+                    <div>
+                      <strong style={{ fontSize: "1.35rem", fontWeight: 900 }}>
+                        {item.score}
+                      </strong>
+                      <span style={{ color: "#737373", fontSize: "0.76rem" }}> / 100</span>
+                      <div style={{ color: "#737373", fontSize: "0.65rem", fontWeight: 800 }}>
+                        D.BELL SCORE*
                       </div>
-                      <strong style={{ fontSize: "1.05rem" }}>{item.price}</strong>
                     </div>
+                    <strong style={{ fontSize: "1.1rem" }}>{item.price}</strong>
                   </div>
-                </div>
 
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: "0.5rem",
-                    padding: "0 1rem 1rem 1rem",
-                  }}
-                >
-                  <button
-                    type="button"
-                    onClick={() => toggleCompare(item.id)}
-                    style={{
-                      backgroundColor: isCompared ? "#111111" : "#ffffff",
-                      color: isCompared ? "#ffffff" : "#111111",
-                      border: "1px solid #111111",
-                      padding: "0.55rem",
-                      fontSize: "0.68rem",
-                      fontWeight: 800,
-                      cursor: "pointer",
-                    }}
-                  >
-                    {isCompared ? t.inCompare : t.addCompare}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setActiveDetailId(item.id)}
-                    style={{
-                      backgroundColor: "#f5f5f4",
-                      color: "#111111",
-                      border: "1px solid #d4d4d4",
-                      padding: "0.55rem",
-                      fontSize: "0.68rem",
-                      fontWeight: 800,
-                      cursor: "pointer",
-                    }}
-                  >
-                    {t.details}
-                  </button>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.5rem" }}>
+                    <button
+                      type="button"
+                      onClick={() => toggleCompare(item.id)}
+                      style={{
+                        backgroundColor: inList ? "#dc2626" : "#111111",
+                        color: "#ffffff",
+                        border: "none",
+                        padding: "0.65rem 0.5rem",
+                        fontSize: "0.68rem",
+                        fontWeight: 800,
+                        letterSpacing: "0.05em",
+                        cursor: "pointer",
+                      }}
+                    >
+                      {inList
+                        ? isEs
+                          ? "EN LISTA ✓"
+                          : "IN COMPARE ✓"
+                        : isEs
+                        ? "AÑADIR A LISTA +"
+                        : "ADD TO COMPARE +"}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setActiveDetail(item)}
+                      style={{
+                        backgroundColor: "#ffffff",
+                        color: "#111111",
+                        border: "1px solid #d4d4d4",
+                        padding: "0.65rem 0.5rem",
+                        fontSize: "0.68rem",
+                        fontWeight: 800,
+                        letterSpacing: "0.05em",
+                        cursor: "pointer",
+                      }}
+                    >
+                      {isEs ? "DETALLES ↗" : "DETAILS ↗"}
+                    </button>
+                  </div>
                 </div>
               </article>
             );
           })}
         </div>
 
-        {/* Active Detail Box */}
         {activeDetail && (
           <div
             style={{
@@ -905,38 +725,36 @@ export default function HomePage() {
               borderTop: "1px solid #e5e5e5",
               borderRight: "1px solid #e5e5e5",
               borderBottom: "1px solid #e5e5e5",
-              padding: "1.1rem 1.25rem",
+              padding: "1rem 1.2rem",
               display: "flex",
               flexWrap: "wrap",
               justifyContent: "space-between",
               alignItems: "center",
-              gap: "1rem",
+              gap: "0.75rem",
             }}
           >
             <div>
-              <span style={{ fontSize: "0.68rem", fontWeight: 800, color: "#dc2626" }}>
-                {t.selectedPrefix} · {activeDetail.brand}
-              </span>
-              <h4 style={{ margin: "0.2rem 0", fontSize: "1.1rem" }}>
+              <strong>
                 {activeDetail.name} — {activeDetail.price} ({activeDetail.score}/100)
-              </h4>
-              <p style={{ margin: 0, fontSize: "0.88rem", color: "#525252" }}>
-                {lang === "ES" ? activeDetail.fitEs : activeDetail.fitEn}
+              </strong>
+              <p style={{ margin: "0.25rem 0 0 0", fontSize: "0.85rem", color: "#525252" }}>
+                {isEs ? activeDetail.fitEs : activeDetail.fitEn}
               </p>
             </div>
             <button
               type="button"
-              onClick={() => setActiveDetailId(null)}
+              onClick={() => setActiveDetail(null)}
               style={{
-                backgroundColor: "transparent",
-                border: "1px solid #d4d4d4",
+                backgroundColor: "#111111",
+                color: "#ffffff",
+                border: "none",
                 padding: "0.45rem 0.75rem",
                 fontSize: "0.72rem",
-                fontWeight: 700,
+                fontWeight: 800,
                 cursor: "pointer",
               }}
             >
-              {t.close}
+              {isEs ? "CERRAR" : "CLOSE"}
             </button>
           </div>
         )}
@@ -951,7 +769,7 @@ export default function HomePage() {
           padding: "3rem 1.25rem",
         }}
       >
-        <div style={{ maxWidth: "1120px", margin: "0 auto" }}>
+        <div style={{ maxWidth: "1160px", margin: "0 auto" }}>
           <div
             style={{
               display: "flex",
@@ -963,123 +781,121 @@ export default function HomePage() {
             }}
           >
             <div>
-              <p
-                style={{
-                  color: "#ef4444",
-                  fontSize: "0.7rem",
-                  fontWeight: 800,
-                  letterSpacing: "0.12em",
-                  margin: "0 0 0.35rem 0",
-                }}
-              >
-                {t.editorialKicker}
+              <p style={{ color: "#ef4444", fontSize: "0.7rem", fontWeight: 800, letterSpacing: "0.12em", margin: "0 0 0.3rem 0" }}>
+                {isEs ? "HISTORIAS, CULTURA Y PERSPECTIVA" : "STORIES, CULTURE & PERSPECTIVE"}
               </p>
               <h2 style={{ fontSize: "2rem", fontWeight: 900, margin: 0 }}>
-                {t.editorialTitle}
+                {isEs ? "MÁS ALLÁ DE LA SNEAKER" : "BEYOND THE SNEAKER"}
               </h2>
             </div>
-            <p style={{ color: "#a3a3a3", fontSize: "0.84rem", maxWidth: "360px", margin: 0 }}>
-              {t.editorialDesc}
+            <p style={{ color: "#a3a3a3", fontSize: "0.82rem", maxWidth: "360px", margin: 0 }}>
+              {isEs
+                ? "Ideas editoriales para una comunidad global. Los artículos mostrados son conceptos de muestra."
+                : "Editorial ideas for a global sneaker audience. Articles shown here are sample concepts, not published reporting."}
             </p>
           </div>
 
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-              gap: "1.1rem",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gap: "1.25rem",
             }}
           >
-            <article
-              style={{
-                backgroundColor: "#1c1917",
-                border: "1px solid #292524",
-                padding: "1.5rem",
-              }}
-            >
-              <span style={{ color: "#ef4444", fontSize: "0.68rem", fontWeight: 800 }}>
-                {t.story1Tag}
-              </span>
-              <h3 style={{ fontSize: "1.5rem", fontWeight: 900, margin: "0.5rem 0" }}>
-                {t.story1Title}
-              </h3>
-              <p style={{ color: "#d4d4d4", fontSize: "0.9rem", lineHeight: 1.5, margin: "0 0 1rem 0" }}>
-                {t.story1Body}
-              </p>
-              <a
-                href="#featured"
-                style={{ color: "#ef4444", fontSize: "0.75rem", fontWeight: 800, textDecoration: "none" }}
-              >
-                {t.story1Cta}
-              </a>
+            <article style={{ backgroundColor: "#18181b", border: "1px solid #27272a" }}>
+              <VisualFrame src="/images/story-culture.jpg" alt="Culture feature" accent="#7f1d1d" height="270px">
+                <div>
+                  <span style={{ color: "#ef4444", fontSize: "0.68rem", fontWeight: 800, letterSpacing: "0.1em" }}>
+                    {isEs ? "REPORTAJE DE CULTURA" : "CULTURE FEATURE"}
+                  </span>
+                  <h3 style={{ fontSize: "1.75rem", lineHeight: 1.02, fontWeight: 900, margin: "0.5rem 0" }}>
+                    {isEs ? "MÁS QUE UNA SILUETA" : "MORE THAN A SILHOUETTE"}
+                  </h3>
+                  <p style={{ color: "#e5e5e5", fontSize: "0.88rem", lineHeight: 1.45, margin: "0 0 0.9rem 0" }}>
+                    {isEs
+                      ? "Cómo las sneakers conectan deporte, identidad, diseño y vida diaria."
+                      : "How sneakers move between sport, identity, design and everyday life."}
+                  </p>
+                  <a
+                    href="#featured"
+                    style={{
+                      color: "#ffffff",
+                      fontSize: "0.72rem",
+                      fontWeight: 800,
+                      textDecoration: "none",
+                      borderBottom: "2px solid #dc2626",
+                      paddingBottom: "0.25rem",
+                    }}
+                  >
+                    {isEs ? "EXPLORAR CULTURA ↗" : "EXPLORE THE CULTURE ↗"}
+                  </a>
+                </div>
+              </VisualFrame>
             </article>
 
-            <article
-              style={{
-                backgroundColor: "#1c1917",
-                border: "1px solid #292524",
-                padding: "1.5rem",
-              }}
-            >
-              <span style={{ color: "#ef4444", fontSize: "0.68rem", fontWeight: 800 }}>
-                {t.story2Tag}
-              </span>
-              <h3 style={{ fontSize: "1.5rem", fontWeight: 900, margin: "0.5rem 0" }}>
-                {t.story2Title}
-              </h3>
-              <p style={{ color: "#d4d4d4", fontSize: "0.9rem", lineHeight: 1.5, margin: "0 0 1rem 0" }}>
-                {t.story2Body}
-              </p>
-              <a
-                href="#finder"
-                style={{ color: "#ef4444", fontSize: "0.75rem", fontWeight: 800, textDecoration: "none" }}
-              >
-                {t.story2Cta}
-              </a>
+            <article style={{ backgroundColor: "#18181b", border: "1px solid #27272a" }}>
+              <VisualFrame src="/images/story-guide.jpg" alt="Performance guide" accent="#1e293b" height="270px">
+                <div>
+                  <span style={{ color: "#ef4444", fontSize: "0.68rem", fontWeight: 800, letterSpacing: "0.1em" }}>
+                    {isEs ? "GUÍA DE RENDIMIENTO" : "PERFORMANCE GUIDE"}
+                  </span>
+                  <h3 style={{ fontSize: "1.75rem", lineHeight: 1.02, fontWeight: 900, margin: "0.5rem 0" }}>
+                    {isEs ? "ELIGE CON PROPÓSITO" : "CHOOSE WITH PURPOSE"}
+                  </h3>
+                  <p style={{ color: "#e5e5e5", fontSize: "0.88rem", lineHeight: 1.45, margin: "0 0 0.9rem 0" }}>
+                    {isEs
+                      ? "Entiende amortiguación, ajuste y uso antes de elegir tu próximo par."
+                      : "Understand cushioning, fit and use before choosing your next pair."}
+                  </p>
+                  <a
+                    href="#compare"
+                    style={{
+                      color: "#ffffff",
+                      fontSize: "0.72rem",
+                      fontWeight: 800,
+                      textDecoration: "none",
+                      borderBottom: "2px solid #dc2626",
+                      paddingBottom: "0.25rem",
+                    }}
+                  >
+                    {isEs ? "BUSCAR TU PAR ↗" : "FIND YOUR PAIR ↗"}
+                  </a>
+                </div>
+              </VisualFrame>
             </article>
           </div>
         </div>
       </section>
 
-      {/* Compare Shortlist + Finder */}
+      {/* Compare & Quick Match */}
       <section
         id="compare"
         style={{
-          maxWidth: "1120px",
+          maxWidth: "1160px",
           margin: "0 auto",
           padding: "3rem 1.25rem",
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(290px, 1fr))",
-          gap: "1.5rem",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gap: "1.25rem",
         }}
       >
-        <div
-          style={{
-            backgroundColor: "#ffffff",
-            border: "1px solid #e5e5e5",
-            padding: "1.5rem",
-          }}
-        >
-          <p style={{ color: "#dc2626", fontSize: "0.7rem", fontWeight: 800, margin: "0 0 0.25rem 0" }}>
-            {t.compareKicker}
+        <div style={{ backgroundColor: "#ffffff", border: "1px solid #e5e5e5", padding: "1.4rem" }}>
+          <p style={{ color: "#dc2626", fontSize: "0.68rem", fontWeight: 800, margin: "0 0 0.25rem 0" }}>
+            {isEs ? "DECIDE BIEN" : "MAKE THE RIGHT CALL"}
           </p>
-          <h2 style={{ fontSize: "1.5rem", fontWeight: 900, margin: "0 0 0.75rem 0" }}>
-            {t.compareTitle}
+          <h2 style={{ fontSize: "1.5rem", fontWeight: 900, margin: "0 0 0.85rem 0" }}>
+            {isEs ? "TU LISTA COMPARATIVA" : "COMPARE YOUR SHORTLIST"}
           </h2>
-          <p style={{ color: "#525252", fontSize: "0.86rem", margin: "0 0 1rem 0" }}>
-            {t.compareDesc}
-          </p>
-
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
-            {comparedSneakers.map((s) => (
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.55rem" }}>
+            {comparedItems.map((s) => (
               <div
                 key={s.id}
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",
+                  backgroundColor: "#f6f5f1",
                   padding: "0.65rem 0.8rem",
-                  backgroundColor: "#f7f6f2",
                   border: "1px solid #e5e5e5",
                 }}
               >
@@ -1100,90 +916,61 @@ export default function HomePage() {
                     cursor: "pointer",
                   }}
                 >
-                  {t.remove}
+                  ✕
                 </button>
               </div>
             ))}
           </div>
         </div>
 
-        <div
-          id="finder"
-          style={{
-            backgroundColor: "#ffffff",
-            border: "1px solid #e5e5e5",
-            padding: "1.5rem",
-          }}
-        >
-          <p style={{ color: "#dc2626", fontSize: "0.7rem", fontWeight: 800, margin: "0 0 0.25rem 0" }}>
-            {t.finderKicker}
+        <div style={{ backgroundColor: "#ffffff", border: "1px solid #e5e5e5", padding: "1.4rem" }}>
+          <p style={{ color: "#dc2626", fontSize: "0.68rem", fontWeight: 800, margin: "0 0 0.25rem 0" }}>
+            {isEs ? "MATCH RÁPIDO" : "QUICK MATCH"}
           </p>
-          <h2 style={{ fontSize: "1.5rem", fontWeight: 900, margin: "0 0 0.75rem 0" }}>
-            {t.finderTitle}
+          <h2 style={{ fontSize: "1.5rem", fontWeight: 900, margin: "0 0 0.85rem 0" }}>
+            {isEs ? "¿QUÉ ES LO MÁS IMPORTANTE?" : "WHAT MATTERS MOST?"}
           </h2>
-
-          <label
-            htmlFor="priority-select"
-            style={{ display: "block", fontSize: "0.78rem", fontWeight: 700, marginBottom: "0.4rem" }}
-          >
-            {t.priorityLabel}
-          </label>
           <select
-            id="priority-select"
             value={priority}
             onChange={(e) => setPriority(e.target.value)}
             style={{
               width: "100%",
               padding: "0.65rem",
               border: "1px solid #d4d4d4",
+              marginBottom: "0.9rem",
               backgroundColor: "#ffffff",
-              fontSize: "0.9rem",
-              marginBottom: "1rem",
             }}
           >
-            {t.priorities.map((p) => (
-              <option key={p.value} value={p.value}>
-                {p.label}
-              </option>
-            ))}
+            <option value="Comfort">{isEs ? "Confort" : "Comfort"}</option>
+            <option value="Versatility">{isEs ? "Versatilidad" : "Versatility"}</option>
+            <option value="Style">{isEs ? "Estilo" : "Style"}</option>
           </select>
-
-          <div
-            style={{
-              backgroundColor: "#111111",
-              color: "#ffffff",
-              padding: "1rem",
-            }}
-          >
+          <div style={{ backgroundColor: "#111111", color: "#ffffff", padding: "1rem" }}>
             <span style={{ color: "#ef4444", fontSize: "0.68rem", fontWeight: 800 }}>
-              {t.recLabel}
+              {isEs ? "ELECCIÓN RECOMENDADA" : "RECOMMENDED PICK"}
             </span>
-            <h3 style={{ margin: "0.25rem 0", fontSize: "1.1rem" }}>
-              {recommendedSneaker.name} ({recommendedSneaker.price})
-            </h3>
-            <p style={{ margin: 0, fontSize: "0.84rem", color: "#d4d4d4" }}>
-              {lang === "ES" ? recommendedSneaker.summaryEs : recommendedSneaker.summaryEn}
-            </p>
+            <div style={{ fontSize: "1.1rem", fontWeight: 900, marginTop: "0.2rem" }}>
+              {pickedSneaker.name} ({pickedSneaker.price})
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Explore Brands */}
+      {/* Brands */}
       <section
         id="brands"
         style={{
-          maxWidth: "1120px",
+          maxWidth: "1160px",
           margin: "0 auto",
-          padding: "1rem 1.25rem 3rem 1.25rem",
+          padding: "0 1.25rem 3rem 1.25rem",
         }}
       >
-        <p style={{ color: "#dc2626", fontSize: "0.7rem", fontWeight: 800, margin: "0 0 0.25rem 0" }}>
-          {t.brandsKicker}
+        <p style={{ color: "#dc2626", fontSize: "0.68rem", fontWeight: 800, margin: "0 0 0.25rem 0" }}>
+          {isEs ? "LAS MARCAS QUE MARCAN EL RITMO" : "THE NAMES SHAPING THE GAME"}
         </p>
-        <h2 style={{ fontSize: "1.85rem", fontWeight: 900, margin: "0 0 1.25rem 0" }}>
-          {t.brandsTitle}
+        <h2 style={{ fontSize: "1.85rem", fontWeight: 900, margin: "0 0 1.2rem 0" }}>
+          {isEs ? "EXPLORAR MARCAS" : "EXPLORE BRANDS"}
         </h2>
-
         <div
           style={{
             display: "grid",
@@ -1197,7 +984,7 @@ export default function HomePage() {
               type="button"
               onClick={() => {
                 setSelectedBrand(brand);
-                setSelectedCategory("ALL");
+                setCategory("ALL");
                 document.getElementById("featured")?.scrollIntoView({ behavior: "smooth" });
               }}
               style={{
@@ -1205,7 +992,7 @@ export default function HomePage() {
                 color: selectedBrand === brand ? "#ffffff" : "#111111",
                 border: "1px solid #e5e5e5",
                 padding: "0.9rem 0.75rem",
-                fontSize: "0.78rem",
+                fontSize: "0.76rem",
                 fontWeight: 800,
                 letterSpacing: "0.06em",
                 cursor: "pointer",
@@ -1217,102 +1004,59 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* The D.BELL System */}
+      {/* Red Newsletter Strip */}
       <section
-        id="system"
-        style={{
-          backgroundColor: "#111111",
-          color: "#ffffff",
-          padding: "3rem 1.25rem",
-        }}
-      >
-        <div style={{ maxWidth: "1120px", margin: "0 auto" }}>
-          <p style={{ color: "#ef4444", fontSize: "0.7rem", fontWeight: 800, margin: "0 0 0.25rem 0" }}>
-            {t.systemKicker}
-          </p>
-          <h2 style={{ fontSize: "2rem", fontWeight: 900, margin: "0 0 1.5rem 0" }}>
-            {t.systemTitle}
-          </h2>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-              gap: "1rem",
-            }}
-          >
-            <div style={{ backgroundColor: "#18181b", border: "1px solid #27272a", padding: "1.25rem" }}>
-              <span style={{ color: "#ef4444", fontSize: "0.7rem", fontWeight: 800 }}>{t.sys1Tag}</span>
-              <h3 style={{ margin: "0.4rem 0", fontSize: "1.15rem" }}>{t.sys1Title}</h3>
-              <p style={{ color: "#a3a3a3", fontSize: "0.86rem", margin: 0 }}>
-                {t.sys1Body}
-              </p>
-            </div>
-            <div style={{ backgroundColor: "#18181b", border: "1px solid #27272a", padding: "1.25rem" }}>
-              <span style={{ color: "#ef4444", fontSize: "0.7rem", fontWeight: 800 }}>{t.sys2Tag}</span>
-              <h3 style={{ margin: "0.4rem 0", fontSize: "1.15rem" }}>{t.sys2Title}</h3>
-              <p style={{ color: "#a3a3a3", fontSize: "0.86rem", margin: 0 }}>
-                {t.sys2Body}
-              </p>
-            </div>
-            <div style={{ backgroundColor: "#18181b", border: "1px solid #27272a", padding: "1.25rem" }}>
-              <span style={{ color: "#ef4444", fontSize: "0.7rem", fontWeight: 800 }}>{t.sys3Tag}</span>
-              <h3 style={{ margin: "0.4rem 0", fontSize: "1.15rem" }}>{t.sys3Title}</h3>
-              <p style={{ color: "#a3a3a3", fontSize: "0.86rem", margin: 0 }}>
-                {t.sys3Body}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Red Newsletter Footer */}
-      <footer
+        id="drop"
         style={{
           backgroundColor: "#dc2626",
           color: "#ffffff",
-          padding: "2.5rem 1.25rem",
+          padding: "2.4rem 1.25rem",
         }}
       >
         <div
           style={{
-            maxWidth: "1120px",
+            maxWidth: "1160px",
             margin: "0 auto",
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-between",
-            alignItems: "center",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
             gap: "1.25rem",
+            alignItems: "center",
           }}
         >
           <div>
-            <p style={{ fontSize: "0.7rem", fontWeight: 800, letterSpacing: "0.1em", margin: "0 0 0.25rem 0" }}>
-              {t.footerKicker}
+            <p style={{ fontSize: "0.68rem", fontWeight: 800, letterSpacing: "0.1em", margin: "0 0 0.25rem 0" }}>
+              {isEs ? "MANTENTE AL DÍA" : "STAY IN THE LOOP"}
             </p>
-            <h2 style={{ fontSize: "1.85rem", fontWeight: 900, margin: 0 }}>
-              {t.footerTitle}
+            <h2 style={{ fontSize: "2rem", fontWeight: 900, margin: "0 0 0.35rem 0" }}>
+              {isEs ? "PRÓXIMO DROP." : "NEXT DROP."}
             </h2>
+            <p style={{ fontSize: "0.84rem", margin: 0, opacity: 0.92 }}>
+              {isEs
+                ? "Novedades editoriales, guías y cultura sneaker. Formulario demo — sin envío de correo activo."
+                : "Editorial updates, guides and sneaker culture. Demo form — no mailing service connected."}
+            </p>
           </div>
 
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              setSubscribed(true);
+              setJoined(true);
             }}
-            style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}
+            style={{ display: "flex", flexWrap: "wrap", gap: "0.45rem", justifyContent: "flex-end" }}
           >
             <input
               type="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder={t.placeholder}
+              placeholder={isEs ? "Tu correo electrónico" : "Your email address"}
               style={{
-                padding: "0.75rem 1rem",
+                padding: "0.8rem 1rem",
                 border: "none",
-                minWidth: "220px",
-                color: "#111111",
+                minWidth: "210px",
+                flex: "1 1 200px",
                 backgroundColor: "#ffffff",
+                color: "#111111",
               }}
             />
             <button
@@ -1321,15 +1065,106 @@ export default function HomePage() {
                 backgroundColor: "#111111",
                 color: "#ffffff",
                 border: "none",
-                padding: "0.75rem 1.1rem",
+                padding: "0.8rem 1.15rem",
                 fontWeight: 800,
-                fontSize: "0.75rem",
+                fontSize: "0.74rem",
                 cursor: "pointer",
               }}
             >
-              {subscribed ? t.joined : t.submit}
+              {joined
+                ? isEs
+                  ? "APUNTADO ✓"
+                  : "JOINED ✓"
+                : isEs
+                ? "APUNTARME ↗"
+                : "SIGN ME UP ↗"}
             </button>
           </form>
+        </div>
+      </section>
+
+      {/* Dark 4-Column Footer */}
+      <footer
+        style={{
+          backgroundColor: "#0d0d0d",
+          color: "#a3a3a3",
+          padding: "3rem 1.25rem 1.5rem 1.25rem",
+          fontSize: "0.82rem",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1160px",
+            margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: "2rem",
+            paddingBottom: "2rem",
+            borderBottom: "1px solid #262626",
+          }}
+        >
+          <div>
+            <div style={{ color: "#ffffff", fontWeight: 900, fontSize: "1rem", marginBottom: "0.6rem" }}>
+              D<span style={{ color: "#dc2626" }}>.</span>BELL
+            </div>
+            <p style={{ margin: 0, lineHeight: 1.55 }}>
+              {isEs
+                ? "Perspectiva independiente sobre sneakers, rendimiento y cultura urbana. Descubre. Compara. Encuentra tu par."
+                : "Independent perspective on sneakers, performance and street culture. Discover. Compare. Find your pair."}
+            </p>
+          </div>
+
+          <div>
+            <div style={{ color: "#ffffff", fontWeight: 800, fontSize: "0.72rem", letterSpacing: "0.1em", marginBottom: "0.75rem" }}>
+              EXPLORE
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.45rem" }}>
+              <a href="#editorial" style={{ color: "inherit", textDecoration: "none" }}>Magazine</a>
+              <a href="#featured" style={{ color: "inherit", textDecoration: "none" }}>Reviews</a>
+              <a href="#compare" style={{ color: "inherit", textDecoration: "none" }}>Compare</a>
+              <a href="#compare" style={{ color: "inherit", textDecoration: "none" }}>Finder</a>
+            </div>
+          </div>
+
+          <div>
+            <div style={{ color: "#ffffff", fontWeight: 800, fontSize: "0.72rem", letterSpacing: "0.1em", marginBottom: "0.75rem" }}>
+              DISCOVER
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.45rem" }}>
+              <a href="#brands" style={{ color: "inherit", textDecoration: "none" }}>Brands</a>
+              <a href="#drop" style={{ color: "inherit", textDecoration: "none" }}>Releases</a>
+              <a href="#featured" style={{ color: "inherit", textDecoration: "none" }}>Sneakers</a>
+            </div>
+          </div>
+
+          <div>
+            <div style={{ color: "#ffffff", fontWeight: 800, fontSize: "0.72rem", letterSpacing: "0.1em", marginBottom: "0.75rem" }}>
+              INFORMATION
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.45rem" }}>
+              <span>About D.BELL</span>
+              <span>Affiliate disclosure</span>
+              <span>Privacy &amp; cookies</span>
+              <span>Contact</span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          style={{
+            maxWidth: "1160px",
+            margin: "1.25rem auto 0 auto",
+            fontSize: "0.72rem",
+            color: "#737373",
+          }}
+        >
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: "0.5rem", marginBottom: "0.65rem" }}>
+            <span>© 2026 D.BELL — Concept prototype</span>
+            <span>Independent editorial platform · Not a retailer</span>
+          </div>
+          <p style={{ margin: 0, lineHeight: 1.5 }}>
+            Affiliate disclosure: this prototype contains no active affiliate links and does not represent existing commercial partnerships. If affiliate links are added in the future, they will be clearly identified. Product details and scores shown in this demo are illustrative and must not be treated as verified buying advice.
+          </p>
         </div>
       </footer>
     </main>
